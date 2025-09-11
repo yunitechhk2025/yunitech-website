@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化语言
     function initLanguage() {
-        const savedLanguage = localStorage.getItem('selectedLanguage') || 'zh-cn';
+        const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
         switchLanguage(savedLanguage);
     }
     
