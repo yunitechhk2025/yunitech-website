@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUNI TECH LIMITED - AI科技解决方案专家</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>YUNI TECH</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link" data-lang-key="nav-home">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link" data-lang-key="nav-about">关于我们</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link" data-lang-key="nav-services">服务项目</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#platform" class="nav-link" data-lang-key="nav-marketplace">YUNI AI市场</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-lang-key="nav-contact">联系我们</a>
+                </li>
+            </ul>
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="zh-cn">简</button>
+                <button class="lang-btn" data-lang="zh-tw">繁</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页横幅 -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">YUNI TECH LIMITED</span>
+                </h1>
+                <p class="hero-subtitle" data-lang-key="hero-subtitle">专业的AI科技解决方案提供商</p>
+                <p class="hero-description" data-lang-key="hero-description">
+                    为企业提供全方位AI解决方案，包括技术咨询、人才招聘、专业培训，
+                    通过YUNI AI自由职业平台连接企业与AI技术专家
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary" data-lang-key="btn-learn-services">了解服务</a>
+                    <a href="#platform" class="btn btn-secondary" data-lang-key="btn-try-marketplace">体验市场</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="ai-animation">
+                    <div class="ai-circle"></div>
+                    <div class="ai-circle"></div>
+                    <div class="ai-circle"></div>
+                    <div class="ai-text">AI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang-key="mission-title">我们的使命</h2>
+                <p data-lang-key="mission-description">
+                    YUNI TECH LIMITED 是一家专注于人工智能技术的创新科技公司。
+                    我们致力于为企业提供最前沿的AI解决方案，帮助企业实现数字化转型，
+                    提升运营效率，创造更大的商业价值。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务项目 -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang-key="services-title">我们的服务</h2>
+                <p data-lang-key="services-subtitle">全方位AI解决方案，满足企业不同需求</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 data-lang-key="service1-title">AI解决方案</h3>
+                    <p data-lang-key="service1-desc">为企业量身定制AI技术解决方案，包括机器学习、深度学习、自然语言处理等前沿技术的应用实施。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 data-lang-key="service2-title">AI咨询服务</h3>
+                    <p data-lang-key="service2-desc">提供专业的AI战略咨询，帮助企业制定AI转型路线图，评估技术可行性，优化投资回报。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 data-lang-key="service3-title">AI人才招聘</h3>
+                    <p data-lang-key="service3-desc">专业的AI人才猎头服务，为企业寻找和匹配最适合的AI技术专家和数据科学家。</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 data-lang-key="service4-title">AI培训教育</h3>
+                    <p data-lang-key="service4-desc">提供系统性的AI技能培训课程，帮助企业员工掌握AI技术，提升团队整体技术能力。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YUNI AI平台 -->
+    <section id="platform" class="platform">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang-key="marketplace-title">YUNI AI 自由职业市场</h2>
+                <p data-lang-key="marketplace-subtitle">连接企业需求与AI技术专家的专业市场</p>
+            </div>
+            <div class="platform-content">
+                <div class="platform-description">
+                    <h3 data-lang-key="marketplace-advantages">市场优势</h3>
+                    <div class="platform-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4 data-lang-key="feature1-title">精准匹配</h4>
+                                <p data-lang-key="feature1-desc">智能算法匹配企业需求与专家技能，确保最佳合作效果</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4 data-lang-key="feature2-title">安全保障</h4>
+                                <p data-lang-key="feature2-desc">完善的信用体系和交易保障机制，确保合作安全可靠</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4 data-lang-key="feature3-title">高效便捷</h4>
+                                <p data-lang-key="feature3-desc">简化的流程设计，快速完成项目对接和交付</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4 data-lang-key="feature4-title">专业品质</h4>
+                                <p data-lang-key="feature4-desc">严格筛选的AI专家团队，保证项目质量和专业水准</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="platform-cta">
+                    <div class="cta-card">
+                        <h3 data-lang-key="enterprise-user">企业用户</h3>
+                        <p data-lang-key="enterprise-desc">发布AI项目需求，找到最适合的技术专家</p>
+                        <a href="#" class="btn btn-primary" data-lang-key="btn-publish-project">发布项目</a>
+                    </div>
+                    <div class="cta-card">
+                        <h3 data-lang-key="ai-expert">AI专家</h3>
+                        <p data-lang-key="ai-expert-desc">展示您的技能，获得优质项目机会</p>
+                        <a href="#" class="btn btn-secondary" data-lang-key="btn-join-marketplace">加入市集</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang-key="contact-title">联系我们</h2>
+                <p data-lang-key="contact-subtitle">让我们一起探讨AI技术如何为您的企业创造价值</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4 data-lang-key="email">邮箱</h4>
+                            <p>info@yunitechhk.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4 data-lang-key="phone">电话</h4>
+                            <p>+852 34800306</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4 data-lang-key="address">地址</h4>
+                            <p data-lang-key="address-detail">中英大厦 上環干諾道西20號 1403室 香港</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="https://formspree.io/f/xvgbljpl" method="POST">
+                        <input type="hidden" name="_subject" value="YUNI TECH 网站联系表单">
+                        <input type="hidden" name="_next" value="?success=true">
+                        <div class="form-group">
+                            <input type="text" name="name" data-lang-key="form-name" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" data-lang-key="form-email" placeholder="邮箱地址" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="company" data-lang-key="form-company" placeholder="公司名称">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" data-lang-key="form-message" placeholder="请描述您的需求..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-lang-key="btn-send">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>YUNI TECH LIMITED</h3>
+                    <p>专业的AI科技解决方案提供商</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footer-services">服务项目</h4>
+                    <ul>
+                        <li><a href="#services">AI解决方案</a></li>
+                        <li><a href="#services">AI咨询</a></li>
+                        <li><a href="#services">人才招聘</a></li>
+                        <li><a href="#services">培训教育</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footer-marketplace-services">市场服务</h4>
+                    <ul>
+                        <li><a href="#platform">企业发布项目</a></li>
+                        <li><a href="#platform">专家注册</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footer-contact-info">联系方式</h4>
+                    <ul>
+                        <li data-lang-key="footer-email">邮箱: info@yunitechhk.com</li>
+                        <li data-lang-key="footer-phone">电话: +852 34800306</li>
+                        <li data-lang-key="footer-address">地址: 中英大厦 上環干諾道西20號 1403室 香港</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang-key="footer-copyright">&copy; 2024 YUNI TECH LIMITED. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="languages.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
