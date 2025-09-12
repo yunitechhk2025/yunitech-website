@@ -5,12 +5,12 @@ const languageData = {
         'nav-home': '首页',
         'nav-about': '关于我们',
         'nav-services': '服务项目',
-        'nav-marketplace': 'YUNI AI 自由职业市集',
+        'nav-marketplace': '芋泥 AI 自由职业市集',
         'nav-contact': '联系我们',
         
         // 主页横幅
         'hero-subtitle': '专业的AI科技解决方案提供商',
-        'hero-description': '为企业提供全方位AI解决方案，包括技术咨询、人才招聘、专业培训，通过YUNI AI自由职业市集连接企业与AI技术专家',
+        'hero-description': '为企业提供全方位AI解决方案，包括技术咨询、人才招聘、专业培训，通过芋泥 AI自由职业市集连接企业与AI技术专家',
         'btn-learn-services': '了解服务',
         'btn-try-marketplace': '体验市集',
         
@@ -33,7 +33,7 @@ const languageData = {
         'service4-desc': '提供系统性的AI技能培训课程，面向企业员工、学生以及社会人士，提升个人和团队技术能力。',
         
         // 市集
-        'marketplace-title': 'YUNI AI 自由职业市集',
+        'marketplace-title': '芋泥 AI 自由职业市集',
         'marketplace-subtitle': '以自由职业为主体，连接企业需求与AI技术专家的专业市集',
         'marketplace-advantages': '市集优势',
         'feature1-title': '精准匹配',
@@ -66,12 +66,19 @@ const languageData = {
         
         // 页脚
         'footer-services': '服务项目',
+        'footer-services-ai-solutions': 'AI解决方案',
+        'footer-services-ai-consulting': 'AI咨询',
+        'footer-services-talent-recruitment': '人才招聘',
+        'footer-services-training-education': '培训教育',
         'footer-marketplace-services': '市集服务',
+        'footer-marketplace-enterprise-publish': '企业发布项目',
+        'footer-marketplace-expert-register': '专家注册',
         'footer-contact-info': '联系方式',
         'footer-email': '邮箱: info@yunitechhk.com',
         'footer-phone': '电话: +852 34800306',
         'footer-address': '地址: 香港上环干诺道西20号 中英大厦 1403室',
-        'footer-copyright': '© 2025 YUNI TECH LIMITED. All rights reserved.'
+        'company-name': '曰宇科技有限公司',
+        'footer-copyright': '© 2025 曰宇科技有限公司。保留所有权利。'
     },
     
     'zh-tw': {
@@ -79,12 +86,12 @@ const languageData = {
         'nav-home': '首頁',
         'nav-about': '關於我們',
         'nav-services': '服務項目',
-        'nav-marketplace': 'YUNI AI 自由職業市場',
+        'nav-marketplace': '芋泥 AI 自由職業市集',
         'nav-contact': '聯繫我們',
         
         // 主頁橫幅
         'hero-subtitle': '專業的AI科技解決方案提供商',
-        'hero-description': '為企業提供全方位AI解決方案，包括技術諮詢、人才招聘、專業培訓，通過YUNI AI自由職業市集連接企業與AI技術專家',
+        'hero-description': '為企業提供全方位AI解決方案，包括技術諮詢、人才招聘、專業培訓，通過芋泥 AI自由職業市集連接企業與AI技術專家',
         'btn-learn-services': '了解服務',
         'btn-try-marketplace': '體驗市集',
         
@@ -107,7 +114,7 @@ const languageData = {
         'service4-desc': '提供系統性的AI技能培訓課程，面向企業員工、學生以及社會人士，提升個人和團隊技術能力。',
         
         // 市集
-        'marketplace-title': 'YUNI AI 自由職業市集',
+        'marketplace-title': '芋泥 AI 自由職業市集',
         'marketplace-subtitle': '以自由職業為主體，連接企業需求與AI技術專家的專業市集',
         'marketplace-advantages': '市集優勢',
         'feature1-title': '精準匹配',
@@ -140,12 +147,19 @@ const languageData = {
         
         // 頁腳
         'footer-services': '服務項目',
+        'footer-services-ai-solutions': 'AI解決方案',
+        'footer-services-ai-consulting': 'AI諮詢',
+        'footer-services-talent-recruitment': '人才招聘',
+        'footer-services-training-education': '培訓教育',
         'footer-marketplace-services': '市集服務',
+        'footer-marketplace-enterprise-publish': '企業發布項目',
+        'footer-marketplace-expert-register': '專家註冊',
         'footer-contact-info': '聯繫方式',
         'footer-email': '郵箱: info@yunitechhk.com',
         'footer-phone': '電話: +852 34800306',
         'footer-address': '地址: 香港上環干諾道西20號 中英大廈 1403室',
-        'footer-copyright': '© 2025 YUNI TECH LIMITED. All rights reserved.'
+        'company-name': '曰宇科技有限公司',
+        'footer-copyright': '© 2025 曰宇科技有限公司。保留所有權利。'
     },
     
     'en': {
@@ -157,7 +171,7 @@ const languageData = {
         'nav-contact': 'Contact Us',
         
         // Hero Section
-        'hero-subtitle': 'Professional AI Technology Solutions Provider',
+        'hero-subtitle': 'Professional AI Technology<br>Solutions Provider',
         'hero-description': 'Providing comprehensive AI solutions for enterprises, including technical consulting, talent recruitment, and professional training. Connect enterprises with AI technology experts through the YUNI AI freelance marketplace.',
         'btn-learn-services': 'Learn More',
         'btn-try-marketplace': 'Try Marketplace',
@@ -205,7 +219,7 @@ const languageData = {
         'email': 'Email',
         'phone': 'Phone',
         'address': 'Address',
-        'address-detail': 'RM 1403, 14/F, CHUNG YING BUILDING,<br/>20 CONNAUGHT RD WEST, SHEUNG WAN<br/>HONG KONG<br/>中英大廈 上環干諾道西20號 香港',
+        'address-detail': 'RM 1403, CHUNG YING BUILDING,<br/>20 CONNAUGHT RD WEST,<br/>SHEUNG WAN, HONG KONG',
         'form-name': 'Your Name',
         'form-email': 'Email Address',
         'form-company': 'Company Name',
@@ -214,11 +228,18 @@ const languageData = {
         
         // Footer
         'footer-services': 'Services',
+        'footer-services-ai-solutions': 'AI Solutions',
+        'footer-services-ai-consulting': 'AI Consulting',
+        'footer-services-talent-recruitment': 'Talent Recruitment',
+        'footer-services-training-education': 'Training & Education',
         'footer-marketplace-services': 'Marketplace Services',
+        'footer-marketplace-enterprise-publish': 'Enterprise Publish Projects',
+        'footer-marketplace-expert-register': 'Expert Registration',
         'footer-contact-info': 'Contact Information',
         'footer-email': 'Email: info@yunitechhk.com',
         'footer-phone': 'Phone: +852 34800306',
-        'footer-address': 'Address: RM 1403, 14/F, Chung Ying Building, 20 Connaught Rd West, Sheung Wan, Hong Kong',
+        'footer-address': 'Address: RM 1403, Chung Ying Building, 20 Connaught Rd West, Sheung Wan, Hong Kong',
+        'company-name': 'YUNI TECH LIMITED',
         'footer-copyright': '© 2025 YUNI TECH LIMITED. All rights reserved.'
     }
 };

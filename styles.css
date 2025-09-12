@@ -48,6 +48,34 @@ body {
     font-size: 1.5rem;
 }
 
+.logo-image {
+    height: 40px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    display: block;
+}
+
+.logo-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.logo-en {
+    color: #667eea;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 1px;
+}
+
+.logo-cn {
+    color: #667eea;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+}
+
 .nav-menu {
     display: flex;
     list-style: none;
@@ -162,10 +190,72 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    color: #666;
+    font-size: 3rem;
+    font-weight: 700;
     margin-bottom: 1rem;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 中文版本不换行 */
+html[lang="zh-CN"] .hero-subtitle,
+html[lang="zh-TW"] .hero-subtitle {
+    white-space: nowrap;
+}
+
+/* 繁体中文字体粗细统一 */
+html[lang="zh-TW"] * {
+    font-weight: inherit;
+}
+
+html[lang="zh-TW"] .hero-title,
+html[lang="zh-TW"] .hero-subtitle,
+html[lang="zh-TW"] .section-header h2,
+html[lang="zh-TW"] .service-card h3,
+html[lang="zh-TW"] .cta-card h3,
+html[lang="zh-TW"] .contact-form h3,
+html[lang="zh-TW"] .footer-section h3,
+html[lang="zh-TW"] .footer-section h4 {
+    font-weight: 700;
+}
+
+html[lang="zh-TW"] .nav-link,
+html[lang="zh-TW"] .lang-btn {
     font-weight: 500;
+}
+
+html[lang="zh-TW"] .btn {
+    font-weight: 600;
+}
+
+
+/* 中文字体族和渲染优化 - 统一简体和繁体 */
+html[lang="zh-CN"],
+html[lang="zh-TW"] {
+    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', '微软雅黑', 'SimSun', '宋体', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* 确保中文标题字体粗细一致 */
+html[lang="zh-CN"] h1,
+html[lang="zh-CN"] h2,
+html[lang="zh-CN"] h3,
+html[lang="zh-CN"] h4,
+html[lang="zh-CN"] h5,
+html[lang="zh-CN"] h6,
+html[lang="zh-TW"] h1,
+html[lang="zh-TW"] h2,
+html[lang="zh-TW"] h3,
+html[lang="zh-TW"] h4,
+html[lang="zh-TW"] h5,
+html[lang="zh-TW"] h6 {
+    font-weight: 700;
+    font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', '微软雅黑', 'SimSun', '宋体', sans-serif;
 }
 
 .hero-description {
@@ -688,8 +778,14 @@ section {
         gap: 2rem;
     }
     
-    .hero-title {
+    .hero-subtitle {
         font-size: 2.5rem;
+    }
+    
+    /* 中文版本在平板下也不换行 */
+    html[lang="zh-CN"] .hero-subtitle,
+    html[lang="zh-TW"] .hero-subtitle {
+        white-space: nowrap;
     }
     
     .hero-buttons {
@@ -721,8 +817,24 @@ section {
 }
 
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
+    .hero-subtitle {
+        font-size: 1.8rem;
+        padding: 0 10px;
+    }
+    
+    /* 中文版本在手机下允许换行 */
+    html[lang="zh-CN"] .hero-subtitle,
+    html[lang="zh-TW"] .hero-subtitle {
+        white-space: normal;
+        line-height: 1.1;
+        font-size: 1.6rem;
+        padding: 0 5px;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        padding: 0 10px;
+        line-height: 1.6;
     }
     
     .section-header h2 {
@@ -741,6 +853,57 @@ section {
     .service-card,
     .contact-form {
         padding: 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* 手机端logo样式 */
+    .logo-text {
+        font-size: 1.2rem;
+        gap: 6px;
+    }
+}
+
+/* 超小屏幕手机 (320px以下) */
+@media (max-width: 320px) {
+    .hero-subtitle {
+        font-size: 1.4rem;
+        padding: 0 5px;
+    }
+    
+    html[lang="zh-CN"] .hero-subtitle,
+    html[lang="zh-TW"] .hero-subtitle {
+        font-size: 1.2rem;
+        padding: 0 2px;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+        padding: 0 5px;
+    }
+    
+    /* 页脚社交媒体图标居中 */
+    .social-links {
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* 超小屏幕logo样式 */
+    .logo-text {
+        font-size: 1rem;
+        gap: 4px;
     }
 }
 

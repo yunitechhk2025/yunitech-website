@@ -2,11 +2,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // 语言切换功能
-    let currentLanguage = 'zh-cn';
+    let currentLanguage = 'zh-tw';
     
     // 初始化语言
     function initLanguage() {
-        const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+        const savedLanguage = localStorage.getItem('selectedLanguage') || 'zh-tw';
         switchLanguage(savedLanguage);
     }
     
