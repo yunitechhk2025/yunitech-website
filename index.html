@@ -200,44 +200,76 @@
                 <p data-lang-key="contact-subtitle">让我们一起探讨AI技术如何为您的企业创造价值</p>
             </div>
             <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4 data-lang-key="email">邮箱</h4>
-                            <p>info@yunitechhk.com</p>
+                <div class="contact-info-card">
+                    <h3 data-lang-key="contact-info-title">联系信息</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4 data-lang-key="email">邮箱</h4>
+                                <p>info@yunitechhk.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4 data-lang-key="phone">电话</h4>
+                                <p>+852 34800306</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4 data-lang-key="address">地址</h4>
+                                <p data-lang-key="address-detail">中英大厦 上環干諾道西20號 1403室 香港</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4 data-lang-key="phone">电话</h4>
-                            <p>+852 34800306</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4 data-lang-key="address">地址</h4>
-                            <p data-lang-key="address-detail">中英大厦 上環干諾道西20號 1403室 香港</p>
+                    
+                    <!-- 社交媒体联系方式 -->
+                    <div class="contact-social-inline">
+                        <h4 data-lang-key="social-contact">社交媒体联系</h4>
+                        <div class="social-links-inline">
+                            <a href="https://wa.me/85296159989" class="social-link-item whatsapp" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-whatsapp"></i>
+                                <span data-lang-key="whatsapp-title">WhatsApp Business</span>
+                            </a>
+                            <a href="https://www.facebook.com/share/163b3fJ9at/" class="social-link-item facebook" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook"></i>
+                                <span data-lang-key="facebook-title">Facebook</span>
+                            </a>
+                            <a href="#" class="social-link-item wechat" id="wechatButton">
+                                <i class="fab fa-weixin"></i>
+                                <span data-lang-key="wechat-title">企业微信</span>
+                            </a>
                         </div>
                     </div>
                 </div>
+                
+                <!-- 联系表单 -->
                 <div class="contact-form">
+                    <h3 data-lang-key="contact-form-title">发送消息</h3>
                     <form action="https://formspree.io/f/xvgbljpl" method="POST">
                         <input type="hidden" name="_subject" value="YUNI TECH 网站联系表单">
                         <input type="hidden" name="_next" value="?success=true">
                         <div class="form-group">
                             <input type="text" name="name" data-lang-key="form-name" placeholder="您的姓名" required>
+                            <span class="required-note" data-lang-key="required-note">（必填）</span>
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" data-lang-key="form-email" placeholder="邮箱地址" required>
+                            <span class="required-note" data-lang-key="required-note">（必填）</span>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="company" data-lang-key="form-company" placeholder="公司名称">
+                            <input type="text" name="company" data-lang-key="form-company" placeholder="公司名称" required>
+                            <span class="required-note" data-lang-key="required-note">（必填）</span>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" data-lang-key="form-message" placeholder="请描述您的需求..." rows="5" required></textarea>
+                            <input type="tel" name="contact" data-lang-key="form-contact" placeholder="微信/WhatsApp/手機號">
+                        </div>
+                        <div class="form-group textarea-group">
+                            <textarea name="message" data-lang-key="form-message" placeholder="请描述您的需求..." rows="8" required></textarea>
+                            <span class="required-note" data-lang-key="required-note">（必填）</span>
                         </div>
                         <button type="submit" class="btn btn-primary" data-lang-key="btn-send">发送消息</button>
                     </form>
@@ -254,9 +286,9 @@
                     <h3 data-lang-key="company-name">YUNI TECH LIMITED</h3>
                     <p data-lang-key="hero-subtitle">专业的AI科技解决方案提供商</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="https://wa.me/85296159989" class="whatsapp" title="WhatsApp Business" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/share/163b3fJ9at/" class="facebook" title="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="wechat" title="WeCom" target="_blank" rel="noopener noreferrer"><i class="fab fa-weixin"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
@@ -289,6 +321,62 @@
             </div>
         </div>
     </footer>
+
+    <!-- 企业微信二维码模态窗口 -->
+    <div id="wechatModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeWeChatQR()">&times;</span>
+            <h3 data-lang-key="wechat-qr-title">扫码添加企业微信</h3>
+            <div class="qr-code-container">
+                <div class="qr-code">
+                    <svg width="200" height="200" viewBox="0 0 200 200">
+                        <!-- 二维码的SVG表示 -->
+                        <rect width="200" height="200" fill="white"/>
+                        <!-- 外围定位块 -->
+                        <rect x="0" y="0" width="50" height="50" fill="black"/>
+                        <rect x="10" y="10" width="30" height="30" fill="white"/>
+                        <rect x="15" y="15" width="20" height="20" fill="black"/>
+                        
+                        <rect x="150" y="0" width="50" height="50" fill="black"/>
+                        <rect x="160" y="10" width="30" height="30" fill="white"/>
+                        <rect x="165" y="15" width="20" height="20" fill="black"/>
+                        
+                        <rect x="0" y="150" width="50" height="50" fill="black"/>
+                        <rect x="10" y="160" width="30" height="30" fill="white"/>
+                        <rect x="15" y="165" width="20" height="20" fill="black"/>
+                        
+                        <!-- 中心图标区域 -->
+                        <circle cx="100" cy="100" r="25" fill="black"/>
+                        <circle cx="100" cy="100" r="20" fill="white"/>
+                        <text x="100" y="108" text-anchor="middle" font-family="FontAwesome" font-size="20" fill="black">💬</text>
+                        
+                        <!-- 数据模块 (简化表示) -->
+                        <rect x="70" y="20" width="5" height="5" fill="black"/>
+                        <rect x="80" y="20" width="5" height="5" fill="black"/>
+                        <rect x="90" y="25" width="5" height="5" fill="black"/>
+                        <rect x="110" y="25" width="5" height="5" fill="black"/>
+                        <rect x="120" y="20" width="5" height="5" fill="black"/>
+                        <rect x="130" y="20" width="5" height="5" fill="black"/>
+                        
+                        <rect x="20" y="70" width="5" height="5" fill="black"/>
+                        <rect x="25" y="80" width="5" height="5" fill="black"/>
+                        <rect x="30" y="90" width="5" height="5" fill="black"/>
+                        <rect x="170" y="70" width="5" height="5" fill="black"/>
+                        <rect x="175" y="80" width="5" height="5" fill="black"/>
+                        <rect x="180" y="90" width="5" height="5" fill="black"/>
+                        
+                        <rect x="70" y="170" width="5" height="5" fill="black"/>
+                        <rect x="80" y="175" width="5" height="5" fill="black"/>
+                        <rect x="90" y="180" width="5" height="5" fill="black"/>
+                        <rect x="110" y="180" width="5" height="5" fill="black"/>
+                        <rect x="120" y="175" width="5" height="5" fill="black"/>
+                        <rect x="130" y="170" width="5" height="5" fill="black"/>
+                    </svg>
+                </div>
+                <p data-lang-key="wechat-qr-desc">使用微信扫描上方二维码添加我们的企业微信</p>
+            </div>
+        </div>
+    </div>
 
     <script src="languages.js"></script>
     <script src="script.js"></script>

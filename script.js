@@ -332,5 +332,154 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // 表单验证功能
+    function initFormValidation() {
+        const form = document.querySelector('.contact-form form');
+        if (!form) return;
+        
+        form.addEventListener('submit', function(e) {
+            const requiredFields = form.querySelectorAll('input[required], textarea[required]');
+            let hasErrors = false;
+            
+            // 清除之前的错误状态
+            document.querySelectorAll('.form-error').forEach(error => error.remove());
+            document.querySelectorAll('.form-group.error').forEach(group => group.classList.remove('error'));
+            
+            requiredFields.forEach(field => {
+                const formGroup = field.closest('.form-group');
+                
+                if (!field.value.trim()) {
+                    hasErrors = true;
+                    formGroup.classList.add('error');
+                    
+                    // 添加错误提示
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'form-error';
+                    errorMsg.textContent = getErrorMessage(field);
+                    formGroup.appendChild(errorMsg);
+                }
+            });
+            
+            if (hasErrors) {
+                e.preventDefault();
+                // 滚动到第一个错误字段
+                const firstError = document.querySelector('.form-group.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+        
+        // 实时验证
+        form.addEventListener('input', function(e) {
+            if (e.target.hasAttribute('required')) {
+                const formGroup = e.target.closest('.form-group');
+                const existingError = formGroup.querySelector('.form-error');
+                
+                if (e.target.value.trim()) {
+                    formGroup.classList.remove('error');
+                    if (existingError) {
+                        existingError.remove();
+                    }
+                }
+            }
+        });
+    }
+    
+    // 获取错误消息
+    function getErrorMessage(field) {
+        const messages = {
+            'zh-cn': {
+                'name': '请填写您的姓名',
+                'email': '请填写邮箱地址',
+                'company': '请填写公司名称',
+                'message': '请描述您的需求'
+            },
+            'zh-tw': {
+                'name': '請填寫您的姓名',
+                'email': '請填寫郵箱地址',
+                'company': '請填寫公司名稱',
+                'message': '請描述您的需求'
+            },
+            'en': {
+                'name': 'Please enter your name',
+                'email': 'Please enter your email',
+                'company': 'Please enter company name',
+                'message': 'Please describe your requirements'
+            }
+        };
+        
+        return messages[currentLanguage][field.name] || '请填写此字段';
+    }
+    
+    // 初始化表单验证
+    initFormValidation();
+    
+    // 初始化企业微信二维码按钮
+    initWeChatButton();
+    
     console.log('YUNI TECH 网站已加载完成！');
+});
+
+// 初始化企业微信按钮
+function initWeChatButton() {
+    const wechatButton = document.getElementById('wechatButton');
+    if (wechatButton) {
+        wechatButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.showWeChatQR();
+            console.log('企业微信按钮被点击');
+        });
+        console.log('企业微信按钮事件监听器已添加');
+    } else {
+        console.error('找不到企业微信按钮元素');
+    }
+}
+
+// 企业微信二维码模态窗口函数 - 全局函数
+window.showWeChatQR = function() {
+    console.log('showWeChatQR 函数被调用');
+    const modal = document.getElementById('wechatModal');
+    console.log('模态窗口元素:', modal);
+    
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // 防止背景滚动
+        console.log('显示企业微信二维码 - 模态窗口应该已显示');
+        
+        // 额外检查确保样式被应用
+        setTimeout(() => {
+            console.log('模态窗口当前display状态:', modal.style.display);
+            console.log('模态窗口计算样式:', window.getComputedStyle(modal).display);
+        }, 100);
+    } else {
+        console.error('找不到wechatModal元素');
+        // 列出所有可能的模态元素
+        const allModals = document.querySelectorAll('.modal');
+        console.log('页面中所有.modal元素:', allModals);
+    }
+}
+
+window.closeWeChatQR = function() {
+    const modal = document.getElementById('wechatModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // 恢复滚动
+        console.log('关闭企业微信二维码'); // 调试信息
+    }
+}
+
+// 点击模态窗口外部关闭
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('wechatModal');
+    if (modal && event.target === modal) {
+        window.closeWeChatQR();
+    }
+});
+
+// ESC键关闭模态窗口
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        window.closeWeChatQR();
+    }
 });
