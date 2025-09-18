@@ -97,8 +97,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // 平滑滚动到锚点
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            // 跳过空的hash或只有#的链接
+            if (href === '#' || href === '') {
+                return;
+            }
+            
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(href);
             if (target) {
                 const offsetTop = target.offsetTop - 70; // 考虑导航栏高度
                 window.scrollTo({
