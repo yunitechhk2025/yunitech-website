@@ -429,16 +429,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 初始化企业微信按钮
 function initWeChatButton() {
+    // 联系我们部分的企业微信按钮
     const wechatButton = document.getElementById('wechatButton');
     if (wechatButton) {
         wechatButton.addEventListener('click', function(e) {
             e.preventDefault();
             window.showWeChatQR();
-            console.log('企业微信按钮被点击');
+            console.log('联系我们区域企业微信按钮被点击');
         });
-        console.log('企业微信按钮事件监听器已添加');
+        console.log('联系我们区域企业微信按钮事件监听器已添加');
     } else {
-        console.error('找不到企业微信按钮元素');
+        console.error('找不到联系我们区域企业微信按钮元素');
+    }
+    
+    // 页脚的企业微信按钮
+    const footerWechatButton = document.getElementById('footerWechatButton');
+    if (footerWechatButton) {
+        footerWechatButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.showWeChatQR();
+            console.log('页脚企业微信按钮被点击');
+        });
+        console.log('页脚企业微信按钮事件监听器已添加');
+    } else {
+        console.error('找不到页脚企业微信按钮元素');
     }
 }
 
