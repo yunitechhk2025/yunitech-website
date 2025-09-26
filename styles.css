@@ -749,9 +749,17 @@ section {
     border-color: #07C160;
 }
 
+.social-link-item.xiaohongshu:hover {
+    background: white;
+    border-color: #ddd;
+    transform: translateX(3px);
+}
+
 .social-link-item.xiaohongshu:hover i {
     background: #FF2442;
     border-color: #FF2442;
+    color: white;
+    transform: scale(1.05);
 }
 
 .contact-form {
@@ -967,11 +975,6 @@ section {
     transform: translateY(-2px);
 }
 
-.social-links a.xiaohongshu:hover {
-    background: #FF2442;
-    color: white;
-    transform: translateY(-2px);
-}
 
 .footer-bottom {
     border-top: 1px solid #34495e;
