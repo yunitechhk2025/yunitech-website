@@ -77,6 +77,9 @@ const languageData = {
         'wechat-title': '企业微信',
         'wechat-desc': '专业商务沟通',
         'wechat-link': '扫码添加联系',
+        'xiaohongshu-title': '小红书',
+        'xiaohongshu-desc': '分享AI技术内容',
+        'xiaohongshu-link': '关注我们的动态',
         'wechat-qr-title': '扫码添加企业微信',
         'wechat-qr-desc': '使用微信扫描上方二维码添加我们的企业微信',
         
@@ -174,6 +177,9 @@ const languageData = {
         'wechat-title': '企業微信',
         'wechat-desc': '專業商務溝通',
         'wechat-link': '掃碼添加聯繫',
+        'xiaohongshu-title': '小紅書',
+        'xiaohongshu-desc': '分享AI技術內容',
+        'xiaohongshu-link': '關注我們的動態',
         'wechat-qr-title': '掃碼添加企業微信',
         'wechat-qr-desc': '使用微信掃描上方二維碼添加我們的企業微信',
         
@@ -271,6 +277,9 @@ const languageData = {
         'wechat-title': 'WeCom',
         'wechat-desc': 'Professional communication',
         'wechat-link': 'Scan to add contact',
+        'xiaohongshu-title': 'Xiaohongshu',
+        'xiaohongshu-desc': 'Share AI tech content',
+        'xiaohongshu-link': 'Follow our updates',
         'wechat-qr-title': 'Scan QR Code to Add WeCom',
         'wechat-qr-desc': 'Use WeChat to scan the QR code above to add our WeCom',
         
