@@ -503,3 +503,4 @@ document.addEventListener('keydown', function(event) {
         window.closeWeChatQR();
     }
 });
+
