@@ -249,13 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // CTA按钮点击效果
-    document.querySelectorAll('.cta-card .btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            showNotification('YUNI AI 自由职业市集 即将上线', 'info');
-        });
-    });
+    // CTA按钮点击效果 - 已移除，允许正常跳转到外部链接
     
     // 导航高亮效果
     window.addEventListener('scroll', function() {
