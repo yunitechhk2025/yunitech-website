@@ -49,11 +49,12 @@ body {
 }
 
 .logo-image {
-    height: 40px;
+    height: 45px;
     width: auto;
-    max-width: 200px;
+    max-width: 180px;
     object-fit: contain;
     display: block;
+    margin-left: -10px;
 }
 
 .logo-text {
@@ -893,6 +894,175 @@ section {
     font-size: 0.9rem;
     margin: 0;
     max-width: 300px;
+}
+
+/* JUMPSTARTER 2026 活动样式 */
+.jumpstarter-event {
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    color: white;
+    padding: 60px 0;
+}
+
+.jumpstarter-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.jumpstarter-poster {
+    flex-shrink: 0;
+    width: 280px;
+}
+
+.jumpstarter-poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.jumpstarter-info {
+    flex: 1;
+}
+
+.jumpstarter-info h2 {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .jumpstarter-info h2 {
+        white-space: normal;
+        font-size: 1.3rem;
+    }
+}
+
+.jumpstarter-subtitle {
+    color: #a0aec0;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.event-badge {
+    display: inline-block;
+    background: #3b82f6;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.jumpstarter-intro {
+    color: #d1d5db;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.jumpstarter-expand-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #60a5fa;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.jumpstarter-expand-toggle:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+}
+
+.jumpstarter-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.jumpstarter-details.show {
+    max-height: 600px;
+}
+
+.jumpstarter-desc {
+    color: #9ca3af;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.jumpstarter-booth-invite {
+    color: #d1d5db;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+}
+
+.jumpstarter-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.jumpstarter-feature {
+    color: #d1d5db;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.jumpstarter-feature strong {
+    color: white;
+}
+
+.jumpstarter-cta {
+    color: #fbbf24;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 500;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* JUMPSTARTER 响应式 */
+@media (max-width: 768px) {
+    .jumpstarter-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .jumpstarter-poster {
+        width: 240px;
+    }
+    
+    .jumpstarter-info h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .jumpstarter-poster {
+        width: 200px;
+    }
+    
+    .jumpstarter-info h2 {
+        font-size: 1.3rem;
+    }
+    
+    .jumpstarter-about-text {
+        font-size: 0.9rem;
+    }
 }
 
 /* 页脚样式 */

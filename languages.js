@@ -6,6 +6,7 @@ const languageData = {
         'nav-about': '关于我们',
         'nav-services': '服务项目',
         'nav-marketplace': '芋泥 AI 自由职业市集',
+        'nav-jumpstarter': '活动',
         'nav-contact': '联系我们',
         
         // 主页横幅
@@ -81,6 +82,21 @@ const languageData = {
         'wechat-qr-title': '扫码添加企业微信',
         'wechat-qr-desc': '使用微信扫描上方二维码添加我们的企业微信',
         
+        // JUMPSTARTER 2026
+        'jumpstarter-title': 'YUNI 芋泥联手数码港，进驻 JUMPSTARTER 2026！',
+        'jumpstarter-subtitle': '助力中小企业即刻开启 AI 转型',
+        'jumpstarter-intro': '由 YUNI Tech 研发的 AI Solution Generator（AI 方案生成器）即将正式登陆 JUMPSTARTER 2026 数码港联合展区！',
+        'jumpstarter-viewmore': '查看详情',
+        'jumpstarter-desc': '我们深知非技术企业在拥抱 AI 时最大的顾虑：成本高昂、流程复杂以及数据安全。在活动现场，YUNI 将演示我们的"一键生成"系统如何为中小企业量身打造专属的 AI OPD（一人 AI 部门）。',
+        'jumpstarter-booth-invite': '欢迎莅临 E02C 展位，体验以下核心优势：',
+        'jumpstarter-feature1-title': '预算透明：',
+        'jumpstarter-feature1-desc': '方案开发总成本封顶价低于 10 万港币。',
+        'jumpstarter-feature2-title': '专家对接：',
+        'jumpstarter-feature2-desc': '自动匹配顶尖 AI 专家，告别繁杂的招聘流程。',
+        'jumpstarter-feature3-title': '安全可靠：',
+        'jumpstarter-feature3-desc': '支持安全云端及私有化部署，全力保护您的企业数据。',
+        'jumpstarter-cta': '我们诚邀各位企业家亲临 E02C 展位，现场体验在 1 分钟内为您的公司生成专属 AI 发展路线图！',
+        
         // 页脚
         'footer-services': '服务项目',
         'footer-services-ai-solutions': 'AI解决方案',
@@ -104,6 +120,7 @@ const languageData = {
         'nav-about': '關於我們',
         'nav-services': '服務項目',
         'nav-marketplace': '芋泥 AI 自由職業市集',
+        'nav-jumpstarter': '活動',
         'nav-contact': '聯繫我們',
         
         // 主頁橫幅
@@ -179,6 +196,21 @@ const languageData = {
         'wechat-qr-title': '掃碼添加企業微信',
         'wechat-qr-desc': '使用微信掃描上方二維碼添加我們的企業微信',
         
+        // JUMPSTARTER 2026
+        'jumpstarter-title': 'YUNI 芋泥聯手數碼港，進駐 JUMPSTARTER 2026！',
+        'jumpstarter-subtitle': '助力中小企業即刻開啟 AI 轉型',
+        'jumpstarter-intro': '由 YUNI Tech 研發的 AI Solution Generator（AI 方案生成器）即將正式登陸 JUMPSTARTER 2026 數碼港聯合展區！',
+        'jumpstarter-viewmore': '查看詳情',
+        'jumpstarter-desc': '我們深知非技術企業在擁抱 AI 時最大的顧慮：成本高昂、流程複雜以及數據安全。在活動現場，YUNI 將演示我們的「一鍵生成」系統如何為中小企業量身打造專屬的 AI OPD（一人 AI 部門）。',
+        'jumpstarter-booth-invite': '歡迎蒞臨 E02C 展位，體驗以下核心優勢：',
+        'jumpstarter-feature1-title': '預算透明：',
+        'jumpstarter-feature1-desc': '方案開發總成本封頂價低於 10 萬港幣。',
+        'jumpstarter-feature2-title': '專家對接：',
+        'jumpstarter-feature2-desc': '自動匹配頂尖 AI 專家，告別繁雜的招聘流程。',
+        'jumpstarter-feature3-title': '安全可靠：',
+        'jumpstarter-feature3-desc': '支持安全雲端及私有化部署，全力保護您的企業數據。',
+        'jumpstarter-cta': '我們誠邀各位企業家親臨 E02C 展位，現場體驗在 1 分鐘內為您的公司生成專屬 AI 發展路線圖！',
+        
         // 頁腳
         'footer-services': '服務項目',
         'footer-services-ai-solutions': 'AI解決方案',
@@ -202,6 +234,7 @@ const languageData = {
         'nav-about': 'About Us',
         'nav-services': 'Services',
         'nav-marketplace': 'YUNI AI Freelance Marketplace',
+        'nav-jumpstarter': 'Event',
         'nav-contact': 'Contact Us',
         
         // Hero Section
@@ -276,6 +309,21 @@ const languageData = {
 
         'wechat-qr-title': 'Scan QR Code to Add WeCom',
         'wechat-qr-desc': 'Use WeChat to scan the QR code above to add our WeCom',
+        
+        // JUMPSTARTER 2026
+        'jumpstarter-title': 'YUNI Joins JUMPSTARTER 2026!',
+        'jumpstarter-subtitle': 'Empowering SMEs with Instant AI Solutions',
+        'jumpstarter-intro': 'The AI Solution Generator, developed by YUNI Tech, is officially landing at the JUMPSTARTER 2026 Cyberport Pavilion!',
+        'jumpstarter-viewmore': 'View Details',
+        'jumpstarter-desc': 'We understand the biggest fears non-technical enterprises face when adopting AI: high costs, complexity, and data security. At the event, YUNI will demonstrate how our "One-Click Generation" system builds a custom AI OPD (One Person Department) tailored specifically for SMEs.',
+        'jumpstarter-booth-invite': 'Visit us at Booth E02C to experience:',
+        'jumpstarter-feature1-title': 'Transparent Budget:',
+        'jumpstarter-feature1-desc': 'Fixed development costs capped under $100K HKD.',
+        'jumpstarter-feature2-title': 'Expert Matching:',
+        'jumpstarter-feature2-desc': 'Skip the tedious hiring process with automatic pairing to top-tier AI specialists.',
+        'jumpstarter-feature3-title': 'Secure & Reliable:',
+        'jumpstarter-feature3-desc': 'Supports both secure cloud and on-premise deployment to protect your data.',
+        'jumpstarter-cta': 'We cordially invite all business owners to visit us at Booth E02C and experience generating your company\'s custom AI Roadmap in just 1 minute!',
         
         // Footer
         'footer-services': 'Services',

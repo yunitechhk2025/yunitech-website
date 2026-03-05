@@ -498,3 +498,34 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+// JUMPSTARTER 详情展开/收起
+function toggleJumpstarterDetails() {
+    const details = document.getElementById('jumpstarterDetails');
+    const toggle = document.querySelector('.jumpstarter-expand-toggle');
+    const toggleText = toggle.querySelector('span');
+    
+    if (details.classList.contains('show')) {
+        details.classList.remove('show');
+        toggle.classList.remove('expanded');
+        // 根据当前语言更新文字
+        const lang = localStorage.getItem('selectedLanguage') || 'zh-tw';
+        const texts = {
+            'zh-cn': '查看详情',
+            'zh-tw': '查看詳情',
+            'en': 'View Details'
+        };
+        toggleText.textContent = texts[lang] || '查看详情';
+    } else {
+        details.classList.add('show');
+        toggle.classList.add('expanded');
+        // 根据当前语言更新文字
+        const lang = localStorage.getItem('selectedLanguage') || 'zh-tw';
+        const texts = {
+            'zh-cn': '收起详情',
+            'zh-tw': '收起詳情',
+            'en': 'Hide Details'
+        };
+        toggleText.textContent = texts[lang] || '收起详情';
+    }
+}
+
