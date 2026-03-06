@@ -96,6 +96,9 @@ const languageData = {
         'jumpstarter-feature3-title': '安全可靠：',
         'jumpstarter-feature3-desc': '支持安全云端及私有化部署，全力保护您的企业数据。',
         'jumpstarter-cta': '我们诚邀各位企业家亲临 E02C 展位，现场体验在 1 分钟内为您的公司生成专属 AI 发展路线图！',
+        'jumpstarter-try-demo': '体验 AI Solution Generator',
+        'back-home': '返回主页',
+        'contact-us': '联系我们',
         
         // 页脚
         'footer-services': '服务项目',
@@ -210,6 +213,9 @@ const languageData = {
         'jumpstarter-feature3-title': '安全可靠：',
         'jumpstarter-feature3-desc': '支持安全雲端及私有化部署，全力保護您的企業數據。',
         'jumpstarter-cta': '我們誠邀各位企業家親臨 E02C 展位，現場體驗在 1 分鐘內為您的公司生成專屬 AI 發展路線圖！',
+        'jumpstarter-try-demo': '體驗 AI Solution Generator',
+        'back-home': '返回主頁',
+        'contact-us': '聯繫我們',
         
         // 頁腳
         'footer-services': '服務項目',
@@ -324,6 +330,9 @@ const languageData = {
         'jumpstarter-feature3-title': 'Secure & Reliable:',
         'jumpstarter-feature3-desc': 'Supports both secure cloud and on-premise deployment to protect your data.',
         'jumpstarter-cta': 'We cordially invite all business owners to visit us at Booth E02C and experience generating your company\'s custom AI Roadmap in just 1 minute!',
+        'jumpstarter-try-demo': 'Try AI Solution Generator',
+        'back-home': 'Back to Home',
+        'contact-us': 'Contact Us',
         
         // Footer
         'footer-services': 'Services',

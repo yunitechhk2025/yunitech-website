@@ -977,6 +977,7 @@ section {
     cursor: pointer;
     transition: color 0.3s ease;
     margin-bottom: 1rem;
+    text-decoration: none;
 }
 
 .jumpstarter-expand-toggle:hover {
