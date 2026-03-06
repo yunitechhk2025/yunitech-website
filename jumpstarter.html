@@ -92,6 +92,7 @@
         
         .jumpstarter-page-header .logo-link img {
             height: 70px;
+            filter: brightness(0) invert(1);
         }
         
         .jumpstarter-page .jumpstarter-card {
@@ -109,6 +110,63 @@
         
         .jumpstarter-page .jumpstarter-expand-toggle {
             display: none;
+        }
+        
+        .jumpstarter-features-highlight {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .feature-icon i {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .feature-content h4 {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 0.4rem 0;
+        }
+        
+        .feature-content p {
+            color: #d1d5db;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .jumpstarter-features-highlight {
+                grid-template-columns: 1fr;
+            }
         }
         
         .jumpstarter-cta-buttons {
@@ -245,23 +303,23 @@
                                 我们深知非技术企业在拥抱 AI 时最大的顾虑：成本高昂、流程复杂以及数据安全。在活动现场，YUNI 将演示我们的"一键生成"系统如何为中小企业量身打造专属的 AI OPD（一人 AI 部门）。
                             </p>
                             <p class="jumpstarter-booth-invite" data-lang-key="jumpstarter-booth-invite">欢迎莅临 E02C 展位，体验以下核心优势：</p>
-                            <div class="jumpstarter-features">
-                                <div class="jumpstarter-feature">
-                                    <div>
-                                        <strong data-lang-key="jumpstarter-feature1-title">预算透明：</strong>
-                                        <span data-lang-key="jumpstarter-feature1-desc">方案开发总成本封顶价低于 10 万港币。</span>
+                            <div class="jumpstarter-features-highlight">
+                                <div class="feature-card">
+                                    <div class="feature-content">
+                                        <h4 data-lang-key="jumpstarter-feature1-title">预算透明</h4>
+                                        <p data-lang-key="jumpstarter-feature1-desc">方案开发总成本封顶价低于 10 万港币。</p>
                                     </div>
                                 </div>
-                                <div class="jumpstarter-feature">
-                                    <div>
-                                        <strong data-lang-key="jumpstarter-feature2-title">专家对接：</strong>
-                                        <span data-lang-key="jumpstarter-feature2-desc">自动匹配顶尖 AI 专家，告别繁杂的招聘流程。</span>
+                                <div class="feature-card">
+                                    <div class="feature-content">
+                                        <h4 data-lang-key="jumpstarter-feature2-title">专家对接</h4>
+                                        <p data-lang-key="jumpstarter-feature2-desc">自动匹配顶尖 AI 专家，告别繁杂的招聘流程。</p>
                                     </div>
                                 </div>
-                                <div class="jumpstarter-feature">
-                                    <div>
-                                        <strong data-lang-key="jumpstarter-feature3-title">安全可靠：</strong>
-                                        <span data-lang-key="jumpstarter-feature3-desc">支持安全云端及私有化部署，全力保护您的企业数据。</span>
+                                <div class="feature-card">
+                                    <div class="feature-content">
+                                        <h4 data-lang-key="jumpstarter-feature3-title">安全可靠</h4>
+                                        <p data-lang-key="jumpstarter-feature3-desc">支持安全云端及私有化部署，全力保护您的企业数据。</p>
                                     </div>
                                 </div>
                             </div>
