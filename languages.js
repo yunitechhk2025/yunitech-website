@@ -83,7 +83,7 @@ const languageData = {
         'wechat-qr-desc': '使用微信扫描上方二维码添加我们的企业微信',
         
         // JUMPSTARTER 2026
-        'jumpstarter-title': 'YUNI 芋泥联手数码港，进驻 JUMPSTARTER 2026！',
+        'jumpstarter-title': 'YUNI 芋泥联手数码港，加入 JUMPSTARTER 2026！',
         'jumpstarter-subtitle': '助力中小企业即刻开启 AI 转型',
         'jumpstarter-intro': '由 YUNI Tech 研发的 AI Solution Generator（AI 方案生成器）即将正式登陆 JUMPSTARTER 2026 数码港联合展区！',
         'jumpstarter-viewmore': '查看详情',
@@ -197,7 +197,7 @@ const languageData = {
         'wechat-qr-desc': '使用微信掃描上方二維碼添加我們的企業微信',
         
         // JUMPSTARTER 2026
-        'jumpstarter-title': 'YUNI 芋泥聯手數碼港，進駐 JUMPSTARTER 2026！',
+        'jumpstarter-title': 'YUNI 芋泥聯手數碼港，加入 JUMPSTARTER 2026！',
         'jumpstarter-subtitle': '助力中小企業即刻開啟 AI 轉型',
         'jumpstarter-intro': '由 YUNI Tech 研發的 AI Solution Generator（AI 方案生成器）即將正式登陸 JUMPSTARTER 2026 數碼港聯合展區！',
         'jumpstarter-viewmore': '查看詳情',

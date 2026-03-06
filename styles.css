@@ -1043,7 +1043,7 @@ section {
     }
     
     .jumpstarter-poster {
-        width: 240px;
+        width: 320px;
     }
     
     .jumpstarter-info h2 {
@@ -1053,7 +1053,7 @@ section {
 
 @media (max-width: 480px) {
     .jumpstarter-poster {
-        width: 200px;
+        width: 280px;
     }
     
     .jumpstarter-info h2 {
