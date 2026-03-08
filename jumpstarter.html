@@ -101,6 +101,41 @@
         
         .jumpstarter-page .jumpstarter-poster {
             width: 350px;
+            overflow: hidden;
+            border-radius: 24px;
+            position: relative;
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.3),
+                0 15px 40px rgba(0, 0, 0, 0.25),
+                0 0 50px rgba(139, 92, 246, 0.25);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .jumpstarter-page .jumpstarter-poster::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1, #8b5cf6);
+            border-radius: 26px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .jumpstarter-page .jumpstarter-poster:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 
+                0 12px 30px rgba(0, 0, 0, 0.4),
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                0 0 70px rgba(139, 92, 246, 0.4);
+        }
+        
+        .jumpstarter-page .jumpstarter-poster img {
+            width: 150%;
+            margin-left: -25%;
+            display: block;
         }
         
         .jumpstarter-page .jumpstarter-details {
@@ -237,7 +272,7 @@
         @media (max-width: 768px) {
             .jumpstarter-page .jumpstarter-poster {
                 width: 90%;
-                max-width: 350px;
+                max-width: 260px;
             }
             
             .back-home {
@@ -289,7 +324,7 @@
             <div class="container">
                 <div class="jumpstarter-card">
                     <div class="jumpstarter-poster">
-                        <img src="jumpstarter-poster.png" alt="JUMPSTARTER 2026 AI Solutions Generator">
+                        <img src="jumpstarter.jpg" alt="JUMPSTARTER 2026 AI Solutions Generator">
                     </div>
                     <div class="jumpstarter-info">
                         <h2 data-lang-key="jumpstarter-title">YUNI 芋泥联手数码港，加入 JUMPSTARTER 2026！</h2>
