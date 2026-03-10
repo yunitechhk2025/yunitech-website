@@ -297,6 +297,7 @@ html[lang="zh-TW"] h6 {
 .btn-secondary {
     background: transparent;
     color: #667eea;
+    white-space: nowrap;
     border: 2px solid #667eea;
 }
 
