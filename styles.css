@@ -297,7 +297,6 @@ html[lang="zh-TW"] h6 {
 .btn-secondary {
     background: transparent;
     color: #667eea;
-    white-space: nowrap;
     border: 2px solid #667eea;
 }
 
@@ -305,6 +304,12 @@ html[lang="zh-TW"] h6 {
     background: #667eea;
     color: white;
     transform: translateY(-2px);
+}
+
+@media (min-width: 992px) {
+    .btn-ai-agent {
+        white-space: nowrap;
+    }
 }
 
 /* AI动画效果 */
@@ -1283,6 +1288,10 @@ section {
     .btn {
         padding: 10px 20px;
         font-size: 0.9rem;
+    }
+
+    .btn-ai-agent {
+        font-size: 0.85rem;
     }
     
     .service-card,
