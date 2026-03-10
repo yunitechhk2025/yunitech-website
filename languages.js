@@ -114,7 +114,7 @@ const languageData = {
         'footer-phone': '电话: +852 34800306',
         'footer-address': '地址: 香港上环干诺道西20号 中英大厦 1403室',
         'company-name': '曰宇科技有限公司',
-        'footer-copyright': '© 2025 曰宇科技有限公司。保留所有权利。'
+        'footer-copyright': '© 2026 曰宇科技有限公司。保留所有权利。'
     },
     
     'zh-tw': {
@@ -231,7 +231,7 @@ const languageData = {
         'footer-phone': '電話: +852 34800306',
         'footer-address': '地址: 香港上環干諾道西20號 中英大廈 1403室',
         'company-name': '曰宇科技有限公司',
-        'footer-copyright': '© 2025 曰宇科技有限公司。保留所有權利。'
+        'footer-copyright': '© 2026 曰宇科技有限公司。保留所有權利。'
     },
     
     'en': {
@@ -348,6 +348,6 @@ const languageData = {
         'footer-phone': 'Phone: +852 34800306',
         'footer-address': 'Address: RM 1403, Chung Ying Building, 20 Connaught Rd West, Sheung Wan, Hong Kong',
         'company-name': 'YUNI TECH LIMITED',
-        'footer-copyright': '© 2025 YUNI TECH LIMITED. All rights reserved.'
+        'footer-copyright': '© 2026 YUNI TECH LIMITED. All rights reserved.'
     }
 };
