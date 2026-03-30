@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 更新页面标题
         const titles = {
-            'zh-cn': 'YUNI TECH LIMITED - AI科技解决方案专家',
-            'zh-tw': 'YUNI TECH LIMITED - AI科技解決方案專家',
-            'en': 'YUNI TECH LIMITED - AI Technology Solutions Expert'
+            'zh-cn': 'YUNI TECH LIMITED - 企业AI转型服务商',
+            'zh-tw': 'YUNI TECH LIMITED - 企業AI轉型服務商',
+            'en': 'YUNI TECH LIMITED - Enterprise AI Transformation Services'
         };
         document.title = titles[language] || titles['zh-cn'];
         

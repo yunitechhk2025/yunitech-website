@@ -9,8 +9,8 @@ const languageData = {
         'nav-contact': '联系我们',
         
         // 主页横幅
-        'hero-subtitle': '专业的AI科技解决方案提供商',
-        'hero-description': '以智能方案与高信誉人才池，开启企业无缝 AI 转型',
+        'hero-subtitle': '专业的企业AI转型服务商',
+        'hero-description': '以智能解决方案与高信誉人才池，开启企业无缝 AI 转型',
         'btn-learn-services': '智能方案生成器',
         'btn-try-marketplace': '高信誉人才池',
         
@@ -18,7 +18,7 @@ const languageData = {
         'about-title': '关于曰宇科技',
         'about-subtitle': '致力于推动AI技术在各行业的创新应用',
         'mission-title': '我们的使命',
-        'mission-description': '曰宇科技有限公司是一家专注于人工智能技术的创新科技公司。我们致力于为企业提供最前沿的AI解决方案，帮助企业实现数字化转型，提升运营效率，创造更大的商业价值。',
+        'mission-description': '曰宇科技有限公司是一家专注于人工智能技术的创新科技公司。我们通过智能方案与高信誉人才基础设施助企业实现AI转型，提升运营效率，积累企业在智能时代的数字资产，创造更大的商业价值。',
         
         // 服务项目
         'services-title': '我们的服务',
@@ -125,8 +125,8 @@ const languageData = {
         'nav-contact': '聯繫我們',
         
         // 主頁橫幅
-        'hero-subtitle': '專業的AI科技解決方案提供商',
-        'hero-description': '以智能方案與高信譽人才池，開啟企業無縫 AI 轉型',
+        'hero-subtitle': '專業的企業AI轉型服務商',
+        'hero-description': '以智能解決方案與高信譽人才池，開啟企業無縫 AI 轉型',
         'btn-learn-services': '智能方案生成器',
         'btn-try-marketplace': '高信譽人才池',
         
@@ -134,7 +134,7 @@ const languageData = {
         'about-title': '關於曰宇科技',
         'about-subtitle': '致力於推動AI技術在各行業的創新應用',
         'mission-title': '我們的使命',
-        'mission-description': '曰宇科技有限公司是一家專注於人工智能技術的創新科技公司。我們致力於為企業提供最前沿的AI解決方案，幫助企業實現數字化轉型，提升運營效率，創造更大的商業價值。',
+        'mission-description': '曰宇科技有限公司是一家專注於人工智能技術的創新科技公司。我們通過智能方案與高信譽人才基礎設施助企業實現AI轉型，提升運營效率，積累企業在智能時代的數字資產，創造更大的商業價值。',
         
         // 服務項目
         'services-title': '我們的服務',
@@ -241,7 +241,7 @@ const languageData = {
         'nav-contact': 'Contact Us',
         
         // Hero Section
-        'hero-subtitle': 'Professional AI Technology<br>Solutions Provider',
+        'hero-subtitle': 'Professional Enterprise AI<br>Transformation Service Provider',
         'hero-description': 'Kickstart enterprise AI transformation with intelligent solutions and high-trust talent infrastructure.',
         'btn-learn-services': 'AI Solution Generator',
         'btn-try-marketplace': 'High-Trust Talent Infrastructure (Marketplace)',
@@ -250,7 +250,7 @@ const languageData = {
         'about-title': 'About YUNI TECH',
         'about-subtitle': 'Committed to promoting innovative applications of AI technology across industries',
         'mission-title': 'Our Mission',
-        'mission-description': 'YUNI TECH LIMITED is an innovative technology company focused on artificial intelligence technology. We are committed to providing enterprises with cutting-edge AI solutions, helping enterprises achieve digital transformation, improve operational efficiency, and create greater business value.',
+        'mission-description': 'YUNI TECH LIMITED is an innovative technology company focused on artificial intelligence. We help enterprises achieve AI transformation through intelligent solutions and high-credibility talent infrastructure, improve operational efficiency, build digital assets for the intelligent era, and create greater business value.',
         
         // Services
         'services-title': 'Our Services',
