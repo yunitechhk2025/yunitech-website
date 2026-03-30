@@ -266,6 +266,12 @@ html[lang="zh-TW"] h6 {
     line-height: 1.8;
 }
 
+@media (min-width: 769px) {
+    .hero-description {
+        padding-left: 1.25rem;
+    }
+}
+
 .hero-buttons {
     display: flex;
     gap: 1rem;

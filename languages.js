@@ -6,14 +6,13 @@ const languageData = {
         'nav-about': '关于我们',
         'nav-services': '服务项目',
         'nav-marketplace': '芋泥 AI 自由职业市集',
-        'nav-jumpstarter': '活动',
         'nav-contact': '联系我们',
         
         // 主页横幅
         'hero-subtitle': '专业的AI科技解决方案提供商',
-        'hero-description': '为企业提供全方位AI解决方案，包括技术咨询、人才招聘、专业培训，通过芋泥 AI自由职业市集连接企业与AI技术专家',
-        'btn-learn-services': '了解服务',
-        'btn-try-marketplace': '体验市集',
+        'hero-description': '以智能方案与高信誉人才池，开启企业无缝 AI 转型',
+        'btn-learn-services': '智能方案生成器',
+        'btn-try-marketplace': '高信誉人才池',
         
         // 关于我们
         'about-title': '关于曰宇科技',
@@ -123,14 +122,13 @@ const languageData = {
         'nav-about': '關於我們',
         'nav-services': '服務項目',
         'nav-marketplace': '芋泥 AI 自由職業市集',
-        'nav-jumpstarter': '活動',
         'nav-contact': '聯繫我們',
         
         // 主頁橫幅
         'hero-subtitle': '專業的AI科技解決方案提供商',
-        'hero-description': '為企業提供全方位AI解決方案，包括技術諮詢、人才招聘、專業培訓，通過芋泥 AI自由職業市集連接企業與AI技術專家',
-        'btn-learn-services': '了解服務',
-        'btn-try-marketplace': '體驗市集',
+        'hero-description': '以智能方案與高信譽人才池，開啟企業無縫 AI 轉型',
+        'btn-learn-services': '智能方案生成器',
+        'btn-try-marketplace': '高信譽人才池',
         
         // 關於我們
         'about-title': '關於曰宇科技',
@@ -240,14 +238,13 @@ const languageData = {
         'nav-about': 'About Us',
         'nav-services': 'Services',
         'nav-marketplace': 'YUNI AI Freelance Marketplace',
-        'nav-jumpstarter': 'Event',
         'nav-contact': 'Contact Us',
         
         // Hero Section
         'hero-subtitle': 'Professional AI Technology<br>Solutions Provider',
-        'hero-description': 'Providing comprehensive AI solutions for enterprises, including technical consulting, talent recruitment, and professional training. Connect enterprises with AI technology experts through the YUNI AI freelance marketplace.',
-        'btn-learn-services': 'Learn More',
-        'btn-try-marketplace': 'Try Marketplace',
+        'hero-description': 'Kickstart enterprise AI transformation with intelligent solutions and high-trust talent infrastructure.',
+        'btn-learn-services': 'AI Solution Generator',
+        'btn-try-marketplace': 'High-Trust Talent Infrastructure (Marketplace)',
         
         // About Us
         'about-title': 'About YUNI TECH',
