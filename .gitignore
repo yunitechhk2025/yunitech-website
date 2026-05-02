@@ -1,0 +1,13 @@
+# Java build output
+target/
+
+# IDE files
+.idea/
+*.iml
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
