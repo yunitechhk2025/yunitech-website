@@ -1,0 +1,4 @@
+com.farming.pay.model.vo.WeChatJsApiPayOrderVoToPrepayWithRequestPaymentResponseMapper
+com.farming.pay.transferbatch.model.InitiateBatchTransferExtensionResponseToWeChatJsApiTransferVoMapper
+com.farming.pay.model.vo.WeChatJsApiTransferVoToInitiateBatchTransferExtensionResponseMapper
+com.wechat.pay.java.service.payments.jsapi.model.PrepayWithRequestPaymentResponseToWeChatJsApiPayOrderVoMapper

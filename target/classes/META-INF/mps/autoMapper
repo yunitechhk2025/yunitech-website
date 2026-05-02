@@ -1,0 +1,11 @@
+com.farming.user.domain.vo.SysUserFollowVo
+com.farming.user.domain.vo.UserDemandVo
+com.farming.user.domain.bo.UserDemandPublishBo
+com.farming.user.domain.vo.SysAreaCodeVo
+com.farming.user.domain.vo.UserResumeVo
+com.farming.user.domain.vo.UserDetailVo
+com.farming.pay.model.vo.WeChatJsApiTransferVo
+com.farming.pay.model.vo.WeChatJsApiPayOrderVo
+com.farming.user.domain.vo.CompanyDemandDeliverVo
+com.farming.user.domain.vo.SysOrderCancelExamineVo
+com.farming.user.domain.vo.SysAppUserResumeVo
