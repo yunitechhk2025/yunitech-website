@@ -158,7 +158,8 @@ body {
 
 /* 主页横幅样式 */
 .hero {
-    min-height: 100vh;
+    min-height: unset;
+    padding: 180px 0 210px;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -321,8 +322,8 @@ html[lang="zh-TW"] h6 {
 
 .ai-animation {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 220px;
+    height: 220px;
 }
 
 .ai-circle {
@@ -342,8 +343,8 @@ html[lang="zh-TW"] h6 {
 }
 
 .ai-circle:nth-child(2) {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -353,8 +354,8 @@ html[lang="zh-TW"] h6 {
 }
 
 .ai-circle:nth-child(3) {
-    width: 300px;
-    height: 300px;
+    width: 220px;
+    height: 220px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -512,8 +513,12 @@ section {
 
 .platform-content {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 4rem;
+}
+
+.platform-description {
+    padding-top: 2rem;
 }
 
 .platform-description h3 {
@@ -546,14 +551,15 @@ section {
 }
 
 .feature-text h4 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.35rem;
+    margin-bottom: 0.6rem;
     color: #333;
 }
 
 .feature-text p {
+    font-size: 1.05rem;
     color: #666;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .platform-cta {
