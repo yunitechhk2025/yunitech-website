@@ -1497,6 +1497,52 @@ html {
     grid-column: 1 / -1;
 }
 
+/* 资讯卡片图片 */
+.news-card-img { width:100%; height:180px; object-fit:cover; border-radius:10px; display:block; }
+
+/* ── 管理模式 ── */
+.admin-topbar { position:fixed; top:0; left:0; right:0; z-index:9999; background:#1a202c; color:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 1.5rem; height:52px; font-size:0.9rem; box-shadow:0 2px 12px rgba(0,0,0,0.3); }
+.admin-topbar .atb-left { display:flex; align-items:center; gap:1rem; }
+.admin-topbar .atb-badge { background:#e53e3e; color:#fff; padding:3px 10px; border-radius:20px; font-size:0.75rem; font-weight:600; }
+.admin-topbar .atb-right { display:flex; align-items:center; gap:0.8rem; }
+.btn-atb-save { background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border:none; padding:7px 20px; border-radius:8px; font-size:0.88rem; font-weight:600; cursor:pointer; }
+.btn-atb-save:disabled { opacity:0.4; cursor:not-allowed; }
+.btn-atb-exit { background:transparent; color:#a0aec0; border:1px solid #4a5568; padding:6px 14px; border-radius:8px; font-size:0.85rem; cursor:pointer; }
+body.admin-mode { padding-top:52px; }
+.news-card { position:relative; }
+.news-card-actions { display:none; position:absolute; top:0.7rem; right:0.7rem; gap:0.4rem; }
+body.admin-mode .news-card-actions { display:flex; }
+.nc-btn { padding:5px 11px; border-radius:7px; font-size:0.78rem; font-weight:500; cursor:pointer; border:none; }
+.nc-btn-edit { background:#667eea; color:#fff; }
+.nc-btn-del  { background:#e53e3e; color:#fff; }
+.news-card-add { border:2px dashed #c3cef7; border-radius:16px; display:none; align-items:center; justify-content:center; min-height:160px; cursor:pointer; color:#667eea; font-size:0.95rem; font-weight:500; gap:0.5rem; transition:background 0.2s; }
+.news-card-add:hover { background:#f0f2ff; }
+body.admin-mode .news-card-add { display:flex; }
+.news-edit-overlay { display:none; position:fixed; inset:0; z-index:10000; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; padding:1rem; }
+.news-edit-overlay.open { display:flex; }
+.news-edit-box { background:#fff; border-radius:18px; padding:2rem; width:100%; max-width:560px; max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.25); }
+.neb-title { font-size:1.05rem; font-weight:700; margin-bottom:1.4rem; color:#333; }
+.neb-field { margin-bottom:1rem; }
+.neb-field label { display:block; font-size:0.82rem; font-weight:500; color:#666; margin-bottom:0.35rem; }
+.neb-field input, .neb-field textarea { width:100%; padding:9px 13px; border:1.5px solid #e2e8f0; border-radius:8px; font-size:0.93rem; outline:none; font-family:inherit; resize:vertical; transition:border 0.2s; }
+.neb-field input:focus, .neb-field textarea:focus { border-color:#667eea; }
+.neb-lang-tabs { display:flex; gap:0.4rem; margin-bottom:1rem; }
+.neb-lang-tab { padding:5px 14px; border:1.5px solid #ddd; border-radius:20px; font-size:0.82rem; cursor:pointer; background:#fff; }
+.neb-lang-tab.on { background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border-color:transparent; }
+.neb-lf { display:none; }
+.neb-lf.on { display:block; }
+.neb-pin-row { display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem; }
+.neb-pin-row input { width:auto; }
+.neb-actions { display:flex; gap:0.8rem; margin-top:1.4rem; }
+.neb-btn-save { flex:1; padding:11px; background:linear-gradient(135deg,#667eea,#764ba2); color:#fff; border:none; border-radius:9px; font-size:0.95rem; font-weight:600; cursor:pointer; }
+.neb-btn-cancel { padding:11px 20px; background:#f7f8fa; border:1.5px solid #e2e8f0; border-radius:9px; font-size:0.95rem; cursor:pointer; }
+.admin-toast { position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(80px); background:#1a202c; color:#fff; padding:11px 22px; border-radius:30px; font-size:0.9rem; box-shadow:0 8px 30px rgba(0,0,0,0.2); transition:transform 0.3s; z-index:99999; pointer-events:none; }
+.admin-toast.show { transform:translateX(-50%) translateY(0); }
+.admin-toast.ok  { background:#276749; }
+.admin-toast.err { background:#9b2c2c; }
+.admin-spinner { display:inline-block; width:13px; height:13px; border:2px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; animation:admsp 0.7s linear infinite; vertical-align:middle; margin-right:4px; }
+@keyframes admsp { to { transform:rotate(360deg); } }
+
 /* 滚动条样式 */
 ::-webkit-scrollbar {
     width: 8px;

@@ -415,47 +415,51 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化表单验证
     initFormValidation();
 
-    // 渲染最新资讯版块
+    // ══════════════════════════════════
+    //  最新资讯渲染
+    // ══════════════════════════════════
+    let localNews = (typeof newsData !== 'undefined') ? [...newsData] : [];
+
     function renderNews(language) {
         const grid = document.getElementById('newsGrid');
-        if (!grid || typeof newsData === 'undefined') return;
-
+        if (!grid) return;
         const lang = language || currentLanguage;
         const data = languageData[lang] || languageData['zh-tw'];
-        const readMore = data['news-read-more'] || '查看详情';
         const pinnedLabel = data['news-pinned'] || '置顶';
-        const emptyText = data['news-empty'] || '暂无资讯';
+        const emptyText   = data['news-empty']   || '暂无资讯';
+        const isAdmin     = document.body.classList.contains('admin-mode');
 
-        const sorted = [...newsData].sort((a, b) => {
+        const sorted = [...localNews].sort((a, b) => {
             if (a.pinned && !b.pinned) return -1;
             if (!a.pinned && b.pinned) return 1;
             return new Date(b.date) - new Date(a.date);
         });
 
-        if (sorted.length === 0) {
-            grid.innerHTML = `<p class="news-empty">${emptyText}</p>`;
-            return;
-        }
-
-        grid.innerHTML = sorted.map(item => {
-            const title = item.title[lang] || item.title['zh-tw'] || '';
-            const content = item.content[lang] || item.content['zh-tw'] || '';
-            const pinnedBadge = item.pinned ? `<span class="news-card-pinned">${pinnedLabel}</span>` : '';
-            const linkBtn = item.link ? `<a href="${item.link}" class="news-card-link" target="_blank" rel="noopener noreferrer">${readMore} →</a>` : '';
-            return `
-                <div class="news-card">
+        const cards = sorted.length === 0
+            ? `<p class="news-empty">${emptyText}</p>`
+            : sorted.map(item => {
+                const title   = item.title[lang]   || item.title['zh-tw'] || '';
+                const content = item.content[lang] || item.content['zh-tw'] || '';
+                const badge   = item.pinned ? `<span class="news-card-pinned">${pinnedLabel}</span>` : '';
+                const img     = item.image ? `<img src="${item.image}" class="news-card-img" alt="">` : '';
+                const actions = isAdmin ? `
+                    <div class="news-card-actions">
+                        <button class="nc-btn nc-btn-edit" onclick="newsAdmin.openEdit('${item.id}')">编辑</button>
+                        <button class="nc-btn nc-btn-del"  onclick="newsAdmin.del('${item.id}')">删除</button>
+                    </div>` : '';
+                return `<div class="news-card" data-news-id="${item.id}">
+                    ${actions}${img}
                     <div class="news-card-meta">
-                        <span class="news-card-date">${item.date}</span>
-                        ${pinnedBadge}
+                        <span class="news-card-date">${item.date}</span>${badge}
                     </div>
-                    <h3>${title}</h3>
-                    <p>${content}</p>
-                    ${linkBtn}
+                    <h3>${title}</h3><p>${content}</p>
                 </div>`;
-        }).join('');
+            }).join('');
+
+        grid.innerHTML = cards + (isAdmin ? `<div class="news-card-add" onclick="newsAdmin.openEdit(null)">＋ 添加资讯</div>` : '');
     }
 
-    // 语言切换时同步更新资讯语言
+    // 语言切换时同步更新资讯
     const _origSwitch = switchLanguage;
     switchLanguage = function(language) {
         _origSwitch(language);
@@ -463,6 +467,310 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     renderNews(currentLanguage);
+
+    // ══════════════════════════════════
+    //  管理模式（URL 含 ?edit=yuni-news-2026）
+    // ══════════════════════════════════
+    const ADMIN_EDIT_KEY = 'yuni-news-2026';
+    const GH_REPO   = 'yunitechhk2025/yunitech-website';
+    const GH_BRANCH = 'main';
+    const GH_FILE   = 'news-data.js';
+
+    if (urlParams.get('edit') === ADMIN_EDIT_KEY) initAdminMode();
+
+    function initAdminMode() {
+        document.body.classList.add('admin-mode');
+        const savedToken = localStorage.getItem('yuni_gh_token') || '';
+        const hasToken = !!savedToken;
+
+        const bar = document.createElement('div');
+        bar.className = 'admin-topbar';
+        bar.innerHTML = `
+            <div class="atb-left">
+                <span class="atb-badge">管理模式</span>
+                <span style="color:#a0aec0">编辑资讯后点击「发布」更新官网</span>
+            </div>
+            <div class="atb-right">
+                <span id="atbTokenStatus" style="font-size:0.82rem;color:${hasToken?'#68d391':'#fc8181'}">${hasToken?'✅ 已连接':'⚠️ 未配置'}</span>
+                <button class="btn-atb-exit" style="font-size:0.8rem;padding:5px 10px" onclick="newsAdmin.openTokenSetup()" title="设置Token">⚙️</button>
+                <input id="atbToken" type="hidden" value="${savedToken}" />
+                <button class="btn-atb-save" id="atbSaveBtn" onclick="newsAdmin.publish()">发布到官网</button>
+                <button class="btn-atb-exit" onclick="newsAdmin.exit()">退出</button>
+            </div>`;
+        document.body.prepend(bar);
+        if (!hasToken) setTimeout(() => newsAdmin.openTokenSetup(), 400);
+
+        const overlay = document.createElement('div');
+        overlay.className = 'news-edit-overlay';
+        overlay.id = 'newsEditOverlay';
+        overlay.innerHTML = `
+            <div class="news-edit-box">
+                <div class="neb-title" id="nebTitle">编辑资讯</div>
+                <div class="neb-field"><label>日期</label><input type="date" id="nebDate" /></div>
+                <div class="neb-field">
+                    <label>图片（选填）</label>
+                    <div id="nebImgPreviewWrap" style="display:none;margin-bottom:0.6rem;">
+                        <img id="nebImgPreview" src="" alt="" style="width:100%;max-height:180px;object-fit:cover;border-radius:8px;border:1px solid #eee;">
+                        <button onclick="newsAdmin.removeImage()" style="margin-top:0.4rem;background:#fff5f5;border:1px solid #fcc;color:#e53e3e;padding:4px 12px;border-radius:6px;font-size:0.8rem;cursor:pointer;">移除图片</button>
+                    </div>
+                    <label id="nebUploadLabel" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;padding:1rem;border:2px dashed #c3cef7;border-radius:10px;cursor:pointer;color:#667eea;font-size:0.9rem;background:#f8f9ff;" onmouseover="this.style.background='#eef0ff'" onmouseout="this.style.background='#f8f9ff'">
+                        📷 点击上传图片
+                        <input type="file" id="nebImgFile" accept="image/*" style="display:none;" onchange="newsAdmin.previewImage(this)" />
+                    </label>
+                    <input type="hidden" id="nebImage" />
+                </div>
+                <div class="neb-pin-row"><input type="checkbox" id="nebPinned" /><label for="nebPinned">置顶</label></div>
+                <div class="neb-lang-tabs">
+                    <button class="neb-lang-tab on" onclick="nebSwitchLang('zh-tw',this)">繁</button>
+                    <button class="neb-lang-tab" onclick="nebSwitchLang('zh-cn',this)">简</button>
+                    <button class="neb-lang-tab" onclick="nebSwitchLang('en',this)">EN</button>
+                </div>
+                <div class="neb-lf on" id="neb-lf-zh-tw">
+                    <div class="neb-field"><label>標題（繁）</label><input type="text" id="neb-t-zh-tw" /></div>
+                    <div class="neb-field"><label>內容（繁）</label><textarea id="neb-c-zh-tw" rows="3"></textarea></div>
+                </div>
+                <div class="neb-lf" id="neb-lf-zh-cn">
+                    <div class="neb-field"><label>标题（简）</label><input type="text" id="neb-t-zh-cn" /></div>
+                    <div class="neb-field"><label>内容（简）</label><textarea id="neb-c-zh-cn" rows="3"></textarea></div>
+                </div>
+                <div class="neb-lf" id="neb-lf-en">
+                    <div class="neb-field"><label>Title (EN)</label><input type="text" id="neb-t-en" /></div>
+                    <div class="neb-field"><label>Content (EN)</label><textarea id="neb-c-en" rows="3"></textarea></div>
+                </div>
+                <div class="neb-actions">
+                    <button class="neb-btn-save" onclick="newsAdmin.saveEdit()">保存</button>
+                    <button class="neb-btn-cancel" onclick="newsAdmin.closeEdit()">取消</button>
+                </div>
+            </div>`;
+        document.body.appendChild(overlay);
+
+        const toast = document.createElement('div');
+        toast.className = 'admin-toast';
+        toast.id = 'adminToast';
+        document.body.appendChild(toast);
+
+        renderNews(currentLanguage);
+    }
+
+    window.nebSwitchLang = function(lang, btn) {
+        document.querySelectorAll('.neb-lang-tab').forEach(b => b.classList.remove('on'));
+        document.querySelectorAll('.neb-lf').forEach(f => f.classList.remove('on'));
+        btn.classList.add('on');
+        document.getElementById('neb-lf-' + lang).classList.add('on');
+    };
+
+    window.newsAdmin = {
+        editingId: null,
+        _pendingFile: null,
+
+        openEdit(id) {
+            this.editingId = id;
+            this._pendingFile = null;
+            document.getElementById('nebTitle').textContent = id ? '编辑资讯' : '添加资讯';
+            document.querySelectorAll('.neb-lang-tab').forEach((b,i) => b.classList.toggle('on', i===0));
+            document.querySelectorAll('.neb-lf').forEach((f,i) => f.classList.toggle('on', i===0));
+            if (id) {
+                const item = localNews.find(n => n.id === id);
+                if (!item) return;
+                document.getElementById('nebDate').value     = item.date || '';
+                document.getElementById('nebImage').value    = item.image || '';
+                document.getElementById('nebPinned').checked = !!item.pinned;
+                if (item.image) {
+                    document.getElementById('nebImgPreview').src = item.image;
+                    document.getElementById('nebImgPreviewWrap').style.display = 'block';
+                    document.getElementById('nebUploadLabel').style.display = 'none';
+                } else {
+                    document.getElementById('nebImgPreviewWrap').style.display = 'none';
+                    document.getElementById('nebUploadLabel').style.display = 'flex';
+                }
+                ['zh-tw','zh-cn','en'].forEach(l => {
+                    document.getElementById('neb-t-'+l).value = item.title[l]   || '';
+                    document.getElementById('neb-c-'+l).value = item.content[l] || '';
+                });
+            } else {
+                document.getElementById('nebDate').value     = new Date().toISOString().slice(0,10);
+                document.getElementById('nebImage').value    = '';
+                document.getElementById('nebPinned').checked = false;
+                document.getElementById('nebImgPreviewWrap').style.display = 'none';
+                document.getElementById('nebUploadLabel').style.display = 'flex';
+                ['zh-tw','zh-cn','en'].forEach(l => {
+                    document.getElementById('neb-t-'+l).value = '';
+                    document.getElementById('neb-c-'+l).value = '';
+                });
+            }
+            document.getElementById('newsEditOverlay').classList.add('open');
+        },
+
+        closeEdit() { document.getElementById('newsEditOverlay').classList.remove('open'); },
+
+        saveEdit() {
+            const date   = document.getElementById('nebDate').value;
+            const pinned = document.getElementById('nebPinned').checked;
+            const tTw = document.getElementById('neb-t-zh-tw').value.trim();
+            const tCn = document.getElementById('neb-t-zh-cn').value.trim();
+            const tEn = document.getElementById('neb-t-en').value.trim();
+            const cTw = document.getElementById('neb-c-zh-tw').value.trim();
+            const cCn = document.getElementById('neb-c-zh-cn').value.trim();
+            const cEn = document.getElementById('neb-c-en').value.trim();
+            if (!tTw && !tCn && !tEn) { adminToast('请至少填写一种语言的标题','err'); return; }
+            if (!date) { adminToast('请选择日期','err'); return; }
+            const existingImg = document.getElementById('nebImage').value.trim();
+
+            const applyItem = (imageUrl) => {
+                if (this.editingId) {
+                    const item = localNews.find(n => n.id === this.editingId);
+                    if (item) {
+                        item.date = date; item.pinned = pinned;
+                        if (imageUrl !== null) item.image = imageUrl;
+                        item.title   = {'zh-tw':tTw||tCn||tEn,'zh-cn':tCn||tTw||tEn,'en':tEn||tTw||tCn};
+                        item.content = {'zh-tw':cTw||cCn||cEn,'zh-cn':cCn||cTw||cEn,'en':cEn||cTw||cCn};
+                    }
+                } else {
+                    localNews.unshift({ id:'n'+Date.now(), date, pinned, image: imageUrl||'',
+                        title:   {'zh-tw':tTw||tCn||tEn,'zh-cn':tCn||tTw||tEn,'en':tEn||tTw||tCn},
+                        content: {'zh-tw':cTw||cCn||cEn,'zh-cn':cCn||cTw||cEn,'en':cEn||cTw||cCn}
+                    });
+                }
+                this.closeEdit();
+                renderNews(currentLanguage);
+            };
+
+            if (this._pendingFile) {
+                const token = localStorage.getItem('yuni_gh_token') || '';
+                if (!token) { this.openTokenSetup(); return; }
+                adminToast('<span class="admin-spinner"></span>正在上传图片…','');
+                this.uploadImageToGitHub(token)
+                    .then(url => { this._pendingFile = null; applyItem(url); adminToast('图片已上传，点「发布到官网」保存','ok'); })
+                    .catch(e => adminToast('图片上传失败：'+e.message,'err'));
+            } else {
+                applyItem(existingImg || null);
+                adminToast('已更新，点「发布到官网」保存','ok');
+            }
+        },
+
+        del(id) {
+            if (!confirm('确定删除？')) return;
+            localNews = localNews.filter(n => n.id !== id);
+            renderNews(currentLanguage);
+            adminToast('已删除，点「发布到官网」保存','ok');
+        },
+
+        async publish() {
+            const token = localStorage.getItem('yuni_gh_token') || '';
+            if (!token) { this.openTokenSetup(); return; }
+            const btn = document.getElementById('atbSaveBtn');
+            btn.disabled = true;
+            adminToast('<span class="admin-spinner"></span>正在发布…','');
+            try {
+                const r1 = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`,
+                    {headers:{'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json'}});
+                if (!r1.ok) throw new Error('获取文件失败 '+r1.status);
+                const info = await r1.json();
+                const content = `const newsData = ${JSON.stringify(localNews,null,4)};\n`;
+                const encoded = btoa(unescape(encodeURIComponent(content)));
+                const r2 = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`,
+                    {method:'PUT', headers:{'Authorization':'token '+token,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
+                     body: JSON.stringify({message:'update news via inline admin',content:encoded,sha:info.sha,branch:GH_BRANCH})});
+                if (!r2.ok) { const e=await r2.json(); throw new Error(e.message); }
+                adminToast('✅ 发布成功！官网约 1 分钟后更新','ok');
+            } catch(e) { adminToast('失败：'+e.message,'err'); }
+            btn.disabled = false;
+        },
+
+        previewImage(input) {
+            const file = input.files[0];
+            if (!file) return;
+            this._pendingFile = file;
+            const reader = new FileReader();
+            reader.onload = e => {
+                document.getElementById('nebImgPreview').src = e.target.result;
+                document.getElementById('nebImgPreviewWrap').style.display = 'block';
+                document.getElementById('nebUploadLabel').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        },
+
+        removeImage() {
+            this._pendingFile = null;
+            document.getElementById('nebImage').value = '';
+            document.getElementById('nebImgPreview').src = '';
+            document.getElementById('nebImgPreviewWrap').style.display = 'none';
+            document.getElementById('nebUploadLabel').style.display = 'flex';
+            document.getElementById('nebImgFile').value = '';
+        },
+
+        async uploadImageToGitHub(token) {
+            if (!this._pendingFile) return null;
+            const file = this._pendingFile;
+            const ext  = file.name.split('.').pop().toLowerCase();
+            const path = 'images/news/news-' + Date.now() + '.' + ext;
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = async e => {
+                    const b64 = e.target.result.split(',')[1];
+                    try {
+                        const resp = await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${path}`,
+                            {method:'PUT', headers:{'Authorization':'token '+token,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
+                             body: JSON.stringify({message:'upload news image',content:b64,branch:GH_BRANCH})});
+                        if (!resp.ok) { const err=await resp.json(); throw new Error(err.message); }
+                        resolve('https://yunitechhk.com/'+path);
+                    } catch(e) { reject(e); }
+                };
+                reader.readAsDataURL(file);
+            });
+        },
+
+        openTokenSetup() {
+            if (document.getElementById('tokenSetupOverlay')) return;
+            const existing = localStorage.getItem('yuni_gh_token') || '';
+            const box = document.createElement('div');
+            box.id = 'tokenSetupOverlay';
+            box.style.cssText = 'position:fixed;inset:0;z-index:20000;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;padding:1rem;';
+            box.innerHTML = `
+                <div style="background:#fff;border-radius:18px;padding:2rem;max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.25);">
+                    <div style="font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;">🔑 一次性设置</div>
+                    <p style="color:#666;font-size:0.88rem;line-height:1.6;margin-bottom:1.2rem;">
+                        需要一个 GitHub Personal Access Token 来保存更改。<br>
+                        <b>设置后记在本机，之后无需再输入。</b>
+                    </p>
+                    <input id="tokenSetupInput" type="password"
+                        style="width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:0.95rem;outline:none;margin-bottom:0.7rem;font-family:monospace;"
+                        placeholder="ghp_xxxxxxxxxxxx" value="${existing}" />
+                    <div style="font-size:0.78rem;color:#aaa;margin-bottom:1.2rem;">
+                        需要 repo 权限。
+                        <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" style="color:#667eea;">点此生成 →</a>
+                    </div>
+                    <div style="display:flex;gap:0.8rem;">
+                        <button onclick="newsAdmin.saveToken()" style="flex:1;padding:11px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:9px;font-size:0.95rem;font-weight:600;cursor:pointer;">保存到本机</button>
+                        <button onclick="document.getElementById('tokenSetupOverlay').remove()" style="padding:11px 18px;border:1.5px solid #e2e8f0;border-radius:9px;background:#f8f9fa;cursor:pointer;">稍后</button>
+                    </div>
+                </div>`;
+            document.body.appendChild(box);
+            setTimeout(() => document.getElementById('tokenSetupInput').focus(), 100);
+        },
+
+        saveToken() {
+            const t = document.getElementById('tokenSetupInput').value.trim();
+            if (!t) { adminToast('请输入 Token','err'); return; }
+            localStorage.setItem('yuni_gh_token', t);
+            document.getElementById('atbToken').value = t;
+            const status = document.getElementById('atbTokenStatus');
+            if (status) { status.style.color='#68d391'; status.textContent='✅ 已连接'; }
+            document.getElementById('tokenSetupOverlay').remove();
+            adminToast('Token 已保存，以后无需再输入','ok');
+        },
+
+        exit() { window.location.href = window.location.pathname; }
+    };
+
+    function adminToast(msg, type) {
+        const el = document.getElementById('adminToast');
+        if (!el) return;
+        el.innerHTML = msg;
+        el.className = 'admin-toast show' + (type ? ' '+type : '');
+        clearTimeout(window._adminToastTimer);
+        window._adminToastTimer = setTimeout(() => el.classList.remove('show'), 3500);
+    }
 
     // 初始化企业微信二维码按钮
     initWeChatButton();
