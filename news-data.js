@@ -1,5 +1,21 @@
 const newsData = [
     {
+        "id": "n1780065740269",
+        "date": "2026-03-13",
+        "pinned": false,
+        "image": "",
+        "title": {
+            "zh-tw": "Jumpstarter 2026",
+            "zh-cn": "Jumpstarter 2026",
+            "en": "Jumpstarter 2026"
+        },
+        "content": {
+            "zh-tw": "与数码港联合参加 Jumpstarter 2026 展览",
+            "zh-cn": "与数码港联合参加 Jumpstarter 2026 展览",
+            "en": "与数码港联合参加 Jumpstarter 2026 展览"
+        }
+    },
+    {
         "id": "n1780065196226",
         "date": "2026-04-16",
         "pinned": false,
