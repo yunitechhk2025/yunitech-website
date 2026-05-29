@@ -496,8 +496,8 @@ async function saveNews(token, retry=2){
     return true;
   } catch(e){
     saving = false;
-    // 409 冲突时自动重试
-    if((e.message.includes('409') || e.message.toLowerCase().includes('conflict')) && retry > 0){
+    // 409 冲突时自动重试（用状态码判断，不依赖错误文字）
+    if(e.status === 409 && retry > 0){
       toast('检测到冲突，自动重试…','');
       await new Promise(r=>setTimeout(r,800));
       return saveNews(token, retry-1);
@@ -514,7 +514,12 @@ async function ghFetch(method, url, body, token){
   };
   if(body) opts.body = JSON.stringify(body);
   const r = await fetch(url, opts);
-  if(!r.ok){ const e=await r.json().catch(()=>({})); throw new Error(e.message||r.status); }
+  if(!r.ok){
+    const e = await r.json().catch(()=>({}));
+    const err = new Error(e.message || r.statusText || String(r.status));
+    err.status = r.status; // 附加状态码，供重试判断
+    throw err;
+  }
   return r.json();
 }
 
