@@ -3,7 +3,7 @@ const newsData = [
         "id": "n1780065740269",
         "date": "2026-03-13",
         "pinned": false,
-        "image": "",
+        "image": "https://yunitechhk.com/images/news/news-1780065893200.jpeg",
         "title": {
             "zh-tw": "Jumpstarter 2026",
             "zh-cn": "Jumpstarter 2026",
