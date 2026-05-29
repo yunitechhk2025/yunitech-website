@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUNI TECH 资讯管理后台</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', 'PingFang TC', sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* ── 登录页 ── */
+        #loginPage {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .login-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .login-card .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-card .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+            margin-bottom: 1rem;
+        }
+
+        .login-card input:focus { border-color: #667eea; }
+
+        .login-card button {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .login-card button:hover { opacity: 0.9; }
+        .login-error { color: #e53e3e; font-size: 0.9rem; margin-top: 0.8rem; display: none; }
+
+        /* ── 主界面 ── */
+        #adminPage { display: none; }
+
+        .admin-header {
+            background: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .admin-header .brand {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .admin-header .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .admin-header a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .admin-body {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .admin-body { grid-template-columns: 1fr; padding: 1rem; }
+        }
+
+        /* ── 卡片 ── */
+        .panel {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .panel h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #444;
+        }
+
+        .panel h2 i { color: #667eea; }
+
+        /* ── 表单 ── */
+        .form-row { margin-bottom: 1.2rem; }
+        .form-row label { display: block; font-size: 0.85rem; font-weight: 500; color: #555; margin-bottom: 0.4rem; }
+
+        .form-row input,
+        .form-row textarea,
+        .form-row select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border 0.2s;
+            font-family: inherit;
+            resize: vertical;
+        }
+
+        .form-row input:focus,
+        .form-row textarea:focus,
+        .form-row select:focus { border-color: #667eea; }
+
+        .lang-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .lang-tab {
+            padding: 6px 16px;
+            border: 1.5px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            background: #fff;
+            transition: all 0.2s;
+        }
+
+        .lang-tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #fff;
+            border-color: transparent;
+        }
+
+        .lang-fields { display: none; }
+        .lang-fields.active { display: block; }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .checkbox-row input[type="checkbox"] { width: auto; }
+        .checkbox-row label { margin: 0; font-size: 0.9rem; }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary:hover { opacity: 0.9; }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* ── GitHub 设置 ── */
+        .github-section {
+            grid-column: 1 / -1;
+        }
+
+        .token-input-wrap {
+            position: relative;
+        }
+
+        .token-input-wrap input { padding-right: 40px; }
+
+        .token-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+            font-size: 1rem;
+        }
+
+        /* ── 资讯列表 ── */
+        .news-list { display: flex; flex-direction: column; gap: 1rem; }
+
+        .news-list-item {
+            border: 1.5px solid #eee;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .news-list-item:hover { border-color: #667eea; }
+
+        .news-list-item .item-info { flex: 1; }
+        .news-list-item .item-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+        .news-list-item .item-meta { font-size: 0.8rem; color: #999; display: flex; gap: 0.8rem; }
+        .news-list-item .item-pinned { color: #667eea; font-weight: 500; }
+
+        .item-actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .btn-pin { background: #f0f0ff; color: #667eea; }
+        .btn-pin:hover { background: #e0e0ff; }
+        .btn-delete { background: #fff0f0; color: #e53e3e; }
+        .btn-delete:hover { background: #ffe0e0; }
+
+        .empty-state {
+            text-align: center;
+            color: #bbb;
+            padding: 2rem;
+            font-size: 0.95rem;
+        }
+
+        /* ── 状态提示 ── */
+        .status-bar {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1a202c;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .status-bar.show { transform: translateX(-50%) translateY(0); }
+        .status-bar.success { background: #276749; }
+        .status-bar.error { background: #9b2c2c; }
+
+        /* ── 进度 ── */
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .section-full { grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+
+<!-- ══════════ 登录页 ══════════ -->
+<div id="loginPage">
+    <div class="login-card">
+        <div class="logo">YUNI TECH</div>
+        <div class="subtitle">资讯管理后台</div>
+        <input type="password" id="loginKey" placeholder="请输入管理密钥" />
+        <button onclick="doLogin()">进入后台</button>
+        <div class="login-error" id="loginError">密钥错误，请重试</div>
+    </div>
+</div>
+
+<!-- ══════════ 管理主界面 ══════════ -->
+<div id="adminPage">
+    <div class="admin-header">
+        <div class="brand">YUNI TECH · 资讯管理</div>
+        <div class="header-actions">
+            <a href="index.html" target="_blank"><i class="fas fa-external-link-alt"></i> 查看官网</a>
+            <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> 退出</a>
+        </div>
+    </div>
+
+    <div class="admin-body">
+
+        <!-- GitHub 配置 -->
+        <div class="panel github-section">
+            <h2><i class="fab fa-github"></i> GitHub 发布设置</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+                <div class="form-row" style="margin:0">
+                    <label>GitHub Personal Access Token</label>
+                    <div class="token-input-wrap">
+                        <input type="password" id="ghToken" placeholder="ghp_xxxxxxxxxxxx" />
+                        <button class="token-toggle" onclick="toggleToken()"><i class="fas fa-eye" id="tokenEyeIcon"></i></button>
+                    </div>
+                </div>
+                <div class="form-row" style="margin:0">
+                    <label>仓库 (owner/repo)</label>
+                    <input type="text" id="ghRepo" value="yunitechhk2025/yunitech-website" />
+                </div>
+                <div class="form-row" style="margin:0">
+                    <label>分支</label>
+                    <input type="text" id="ghBranch" value="main" />
+                </div>
+            </div>
+            <p style="font-size:0.8rem;color:#aaa;margin-top:0.8rem;">
+                <i class="fas fa-info-circle"></i>
+                Token 需要 <code>repo</code> 权限。每次打开页面需重新输入，不会保存在任何地方。
+                <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" style="color:#667eea">生成 Token →</a>
+            </p>
+        </div>
+
+        <!-- 添加资讯 -->
+        <div class="panel">
+            <h2><i class="fas fa-plus-circle"></i> 发布新资讯</h2>
+
+            <div class="form-row">
+                <label>日期</label>
+                <input type="date" id="newsDate" />
+            </div>
+
+            <div class="form-row">
+                <label>链接（选填）</label>
+                <input type="url" id="newsLink" placeholder="https://..." />
+            </div>
+
+            <div class="checkbox-row">
+                <input type="checkbox" id="newsPinned" />
+                <label for="newsPinned">置顶此资讯</label>
+            </div>
+
+            <label style="font-size:0.85rem;font-weight:500;color:#555;display:block;margin-bottom:0.6rem;">标题 &amp; 内容</label>
+            <div class="lang-tabs">
+                <button class="lang-tab active" onclick="switchFormLang('zh-tw', this)">繁</button>
+                <button class="lang-tab" onclick="switchFormLang('zh-cn', this)">简</button>
+                <button class="lang-tab" onclick="switchFormLang('en', this)">EN</button>
+            </div>
+
+            <div class="lang-fields active" id="fields-zh-tw">
+                <div class="form-row"><label>標題（繁體）</label><input type="text" id="title-zh-tw" placeholder="資訊標題" /></div>
+                <div class="form-row"><label>內容（繁體）</label><textarea id="content-zh-tw" rows="4" placeholder="資訊內容…"></textarea></div>
+            </div>
+            <div class="lang-fields" id="fields-zh-cn">
+                <div class="form-row"><label>标题（简体）</label><input type="text" id="title-zh-cn" placeholder="资讯标题" /></div>
+                <div class="form-row"><label>内容（简体）</label><textarea id="content-zh-cn" rows="4" placeholder="资讯内容…"></textarea></div>
+            </div>
+            <div class="lang-fields" id="fields-en">
+                <div class="form-row"><label>Title (English)</label><input type="text" id="title-en" placeholder="News title" /></div>
+                <div class="form-row"><label>Content (English)</label><textarea id="content-en" rows="4" placeholder="News content…"></textarea></div>
+            </div>
+
+            <button class="btn-primary" id="publishBtn" onclick="publishNews()">
+                <i class="fas fa-paper-plane"></i> 发布资讯
+            </button>
+        </div>
+
+        <!-- 资讯列表 -->
+        <div class="panel">
+            <h2><i class="fas fa-list"></i> 已发布资讯</h2>
+            <div class="news-list" id="adminNewsList"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 状态提示 -->
+<div class="status-bar" id="statusBar"></div>
+
+<script>
+// ══════════════════════════════════════════
+//  配置
+// ══════════════════════════════════════════
+const ADMIN_KEY = 'yuni-news-2026';          // ← 管理密钥（可修改）
+const NEWS_FILE = 'news-data.js';
+
+// ══════════════════════════════════════════
+//  登录
+// ══════════════════════════════════════════
+function doLogin() {
+    const key = document.getElementById('loginKey').value;
+    if (key === ADMIN_KEY) {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('adminPage').style.display = 'block';
+        loadNewsFromGitHub();
+    } else {
+        document.getElementById('loginError').style.display = 'block';
+    }
+}
+
+document.getElementById('loginKey').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+});
+
+function logout() {
+    document.getElementById('loginPage').style.display = 'flex';
+    document.getElementById('adminPage').style.display = 'none';
+    document.getElementById('loginKey').value = '';
+    document.getElementById('ghToken').value = '';
+}
+
+function toggleToken() {
+    const inp = document.getElementById('ghToken');
+    const icon = document.getElementById('tokenEyeIcon');
+    if (inp.type === 'password') {
+        inp.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+    } else {
+        inp.type = 'password';
+        icon.className = 'fas fa-eye';
+    }
+}
+
+// ══════════════════════════════════════════
+//  本地新闻数据（内存中）
+// ══════════════════════════════════════════
+let localNews = [];
+
+// ══════════════════════════════════════════
+//  GitHub API
+// ══════════════════════════════════════════
+function getGitHubConfig() {
+    return {
+        token: document.getElementById('ghToken').value.trim(),
+        repo:  document.getElementById('ghRepo').value.trim(),
+        branch: document.getElementById('ghBranch').value.trim() || 'main'
+    };
+}
+
+async function loadNewsFromGitHub() {
+    const cfg = getGitHubConfig();
+    if (!cfg.token) {
+        // 无 token 时尝试直接 fetch 当前目录下的 news-data.js
+        try {
+            const resp = await fetch('news-data.js?t=' + Date.now());
+            const text = await resp.text();
+            localNews = parseNewsJs(text);
+        } catch(e) {
+            localNews = [];
+        }
+        renderAdminList();
+        return;
+    }
+
+    showStatus('正在读取资讯数据…', 'info');
+    try {
+        const resp = await ghRequest('GET', `https://api.github.com/repos/${cfg.repo}/contents/${NEWS_FILE}?ref=${cfg.branch}`, null, cfg.token);
+        const data = await resp.json();
+        const content = atob(data.content.replace(/\n/g, ''));
+        localNews = parseNewsJs(content);
+        renderAdminList();
+        showStatus('已加载 ' + localNews.length + ' 条资讯', 'success');
+    } catch(e) {
+        showStatus('读取失败：' + e.message, 'error');
+        localNews = [];
+        renderAdminList();
+    }
+}
+
+function parseNewsJs(text) {
+    try {
+        // 提取 newsData 数组 JSON
+        const match = text.match(/const\s+newsData\s*=\s*(\[[\s\S]*?\]);/);
+        if (!match) return [];
+        return JSON.parse(match[1]);
+    } catch(e) {
+        return [];
+    }
+}
+
+function buildNewsJs(arr) {
+    return `const newsData = ${JSON.stringify(arr, null, 4)};\n`;
+}
+
+async function ghRequest(method, url, body, token) {
+    const opts = {
+        method,
+        headers: {
+            'Authorization': 'token ' + token,
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.github.v3+json'
+        }
+    };
+    if (body) opts.body = JSON.stringify(body);
+    const resp = await fetch(url, opts);
+    if (!resp.ok) {
+        const err = await resp.json().catch(() => ({}));
+        throw new Error(err.message || resp.statusText);
+    }
+    return resp;
+}
+
+async function saveToGitHub() {
+    const cfg = getGitHubConfig();
+    if (!cfg.token) {
+        showStatus('请先填写 GitHub Token 才能发布到网站', 'error');
+        return false;
+    }
+
+    showStatus('<span class="spinner"></span> 正在发布到 GitHub…', 'info');
+
+    try {
+        // 获取当前文件 SHA
+        const getResp = await ghRequest('GET', `https://api.github.com/repos/${cfg.repo}/contents/${NEWS_FILE}?ref=${cfg.branch}`, null, cfg.token);
+        const fileData = await getResp.json();
+        const sha = fileData.sha;
+
+        const newContent = buildNewsJs(localNews);
+        const encoded = btoa(unescape(encodeURIComponent(newContent)));
+
+        await ghRequest('PUT', `https://api.github.com/repos/${cfg.repo}/contents/${NEWS_FILE}`, {
+            message: 'update news-data.js via admin panel',
+            content: encoded,
+            sha: sha,
+            branch: cfg.branch
+        }, cfg.token);
+
+        showStatus('发布成功！网站将在 1-2 分钟内更新', 'success');
+        return true;
+    } catch(e) {
+        showStatus('发布失败：' + e.message, 'error');
+        return false;
+    }
+}
+
+// ══════════════════════════════════════════
+//  UI 操作
+// ══════════════════════════════════════════
+function switchFormLang(lang, btn) {
+    document.querySelectorAll('.lang-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.lang-fields').forEach(f => f.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('fields-' + lang).classList.add('active');
+}
+
+async function publishNews() {
+    const titleTw  = document.getElementById('title-zh-tw').value.trim();
+    const titleCn  = document.getElementById('title-zh-cn').value.trim();
+    const titleEn  = document.getElementById('title-en').value.trim();
+    const contentTw = document.getElementById('content-zh-tw').value.trim();
+    const contentCn = document.getElementById('content-zh-cn').value.trim();
+    const contentEn = document.getElementById('content-en').value.trim();
+    const date     = document.getElementById('newsDate').value;
+    const link     = document.getElementById('newsLink').value.trim();
+    const pinned   = document.getElementById('newsPinned').checked;
+
+    if (!titleTw && !titleCn && !titleEn) { showStatus('请至少填写一种语言的标题', 'error'); return; }
+    if (!date) { showStatus('请选择日期', 'error'); return; }
+
+    const item = {
+        id: 'news-' + Date.now(),
+        date,
+        pinned,
+        title: {
+            'zh-tw': titleTw || titleCn || titleEn,
+            'zh-cn': titleCn || titleTw || titleEn,
+            'en':    titleEn || titleTw || titleCn
+        },
+        content: {
+            'zh-tw': contentTw || contentCn || contentEn,
+            'zh-cn': contentCn || contentTw || contentEn,
+            'en':    contentEn || contentTw || contentCn
+        }
+    };
+    if (link) item.link = link;
+
+    localNews.unshift(item);
+
+    const btn = document.getElementById('publishBtn');
+    btn.disabled = true;
+
+    const ok = await saveToGitHub();
+
+    btn.disabled = false;
+
+    if (ok) {
+        // 清空表单
+        ['title-zh-tw','title-zh-cn','title-en','content-zh-tw','content-zh-cn','content-en'].forEach(id => {
+            document.getElementById(id).value = '';
+        });
+        document.getElementById('newsLink').value = '';
+        document.getElementById('newsPinned').checked = false;
+        document.getElementById('newsDate').value = '';
+        renderAdminList();
+    } else {
+        // 回滚
+        localNews.shift();
+    }
+}
+
+async function deleteNews(id) {
+    if (!confirm('确定删除这条资讯？')) return;
+    localNews = localNews.filter(n => n.id !== id);
+    const ok = await saveToGitHub();
+    if (ok) renderAdminList();
+    else { localNews = localNews; showStatus('删除失败，请重试', 'error'); }
+}
+
+async function togglePin(id) {
+    const item = localNews.find(n => n.id === id);
+    if (!item) return;
+    item.pinned = !item.pinned;
+    const ok = await saveToGitHub();
+    if (ok) renderAdminList();
+}
+
+function renderAdminList() {
+    const el = document.getElementById('adminNewsList');
+    if (!localNews.length) {
+        el.innerHTML = '<div class="empty-state">暂无资讯</div>';
+        return;
+    }
+
+    const sorted = [...localNews].sort((a, b) => {
+        if (a.pinned && !b.pinned) return -1;
+        if (!a.pinned && b.pinned) return 1;
+        return new Date(b.date) - new Date(a.date);
+    });
+
+    el.innerHTML = sorted.map(item => `
+        <div class="news-list-item">
+            <div class="item-info">
+                <div class="item-title">${item.title['zh-tw'] || item.title['zh-cn'] || item.title['en']}</div>
+                <div class="item-meta">
+                    <span>${item.date}</span>
+                    ${item.pinned ? '<span class="item-pinned">📌 置顶</span>' : ''}
+                    ${item.link ? `<a href="${item.link}" target="_blank" style="color:#667eea">链接</a>` : ''}
+                </div>
+            </div>
+            <div class="item-actions">
+                <button class="btn-icon btn-pin" title="${item.pinned ? '取消置顶' : '置顶'}" onclick="togglePin('${item.id}')">
+                    <i class="fas fa-thumbtack"></i>
+                </button>
+                <button class="btn-icon btn-delete" title="删除" onclick="deleteNews('${item.id}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ══════════════════════════════════════════
+//  状态提示
+// ══════════════════════════════════════════
+let statusTimer;
+function showStatus(msg, type = 'info') {
+    const bar = document.getElementById('statusBar');
+    bar.innerHTML = msg;
+    bar.className = 'status-bar ' + type + ' show';
+    clearTimeout(statusTimer);
+    statusTimer = setTimeout(() => bar.classList.remove('show'), 4000);
+}
+
+// 初始化今天日期
+document.getElementById('newsDate').value = new Date().toISOString().slice(0, 10);
+</script>
+</body>
+</html>

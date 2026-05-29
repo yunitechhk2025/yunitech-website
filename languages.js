@@ -6,7 +6,13 @@ const languageData = {
         'nav-about': '关于我们',
         'nav-services': '服务项目',
         'nav-marketplace': '芋泥 AI 自由职业市集',
+        'nav-news': '最新资讯',
         'nav-contact': '联系我们',
+        'news-title': '最新资讯',
+        'news-subtitle': '了解 YUNI TECH 的最新动态与行业资讯',
+        'news-read-more': '查看详情',
+        'news-pinned': '置顶',
+        'news-empty': '暂无资讯，敬请期待。',
         
         // 主页横幅
         'hero-subtitle': '专业的企业AI转型服务商',
@@ -122,7 +128,13 @@ const languageData = {
         'nav-about': '關於我們',
         'nav-services': '服務項目',
         'nav-marketplace': '芋泥 AI 自由職業市集',
+        'nav-news': '最新資訊',
         'nav-contact': '聯繫我們',
+        'news-title': '最新資訊',
+        'news-subtitle': '了解 YUNI TECH 的最新動態與行業資訊',
+        'news-read-more': '查看詳情',
+        'news-pinned': '置頂',
+        'news-empty': '暫無資訊，敬請期待。',
         
         // 主頁橫幅
         'hero-subtitle': '專業的企業AI轉型服務商',
@@ -238,7 +250,13 @@ const languageData = {
         'nav-about': 'About Us',
         'nav-services': 'Services',
         'nav-marketplace': 'YUNI AI Freelance Marketplace',
+        'nav-news': 'News',
         'nav-contact': 'Contact Us',
+        'news-title': 'Latest News',
+        'news-subtitle': 'Stay updated with YUNI TECH\'s latest developments and industry insights',
+        'news-read-more': 'Read More',
+        'news-pinned': 'Pinned',
+        'news-empty': 'No news at the moment. Stay tuned.',
         
         // Hero Section
         'hero-subtitle': 'Professional Enterprise AI<br>Transformation Service Provider',

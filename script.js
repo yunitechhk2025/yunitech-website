@@ -414,7 +414,56 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化表单验证
     initFormValidation();
-    
+
+    // 渲染最新资讯版块
+    function renderNews(language) {
+        const grid = document.getElementById('newsGrid');
+        if (!grid || typeof newsData === 'undefined') return;
+
+        const lang = language || currentLanguage;
+        const data = languageData[lang] || languageData['zh-tw'];
+        const readMore = data['news-read-more'] || '查看详情';
+        const pinnedLabel = data['news-pinned'] || '置顶';
+        const emptyText = data['news-empty'] || '暂无资讯';
+
+        const sorted = [...newsData].sort((a, b) => {
+            if (a.pinned && !b.pinned) return -1;
+            if (!a.pinned && b.pinned) return 1;
+            return new Date(b.date) - new Date(a.date);
+        });
+
+        if (sorted.length === 0) {
+            grid.innerHTML = `<p class="news-empty">${emptyText}</p>`;
+            return;
+        }
+
+        grid.innerHTML = sorted.map(item => {
+            const title = item.title[lang] || item.title['zh-tw'] || '';
+            const content = item.content[lang] || item.content['zh-tw'] || '';
+            const pinnedBadge = item.pinned ? `<span class="news-card-pinned">${pinnedLabel}</span>` : '';
+            const linkBtn = item.link ? `<a href="${item.link}" class="news-card-link" target="_blank" rel="noopener noreferrer">${readMore} →</a>` : '';
+            return `
+                <div class="news-card">
+                    <div class="news-card-meta">
+                        <span class="news-card-date">${item.date}</span>
+                        ${pinnedBadge}
+                    </div>
+                    <h3>${title}</h3>
+                    <p>${content}</p>
+                    ${linkBtn}
+                </div>`;
+        }).join('');
+    }
+
+    // 语言切换时同步更新资讯语言
+    const _origSwitch = switchLanguage;
+    switchLanguage = function(language) {
+        _origSwitch(language);
+        renderNews(language);
+    };
+
+    renderNews(currentLanguage);
+
     // 初始化企业微信二维码按钮
     initWeChatButton();
     
