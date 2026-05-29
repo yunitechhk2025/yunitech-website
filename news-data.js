@@ -19,7 +19,7 @@ const newsData = [
         "id": "n1780065128108",
         "date": "2026-04-28",
         "pinned": false,
-        "image": "https://yunitechhk.com/images/news/news-1780065123744.jpeg",
+        "image": "https://yunitechhk.com/images/news/news-1780065629465.jpeg",
         "title": {
             "zh-tw": "InnoEX 2026",
             "zh-cn": "InnoEX 2026",
@@ -29,6 +29,7 @@ const newsData = [
             "zh-tw": "参加了 2026 年 InnoEX 的 B4B 挑战赛",
             "zh-cn": "参加了 2026 年 InnoEX 的 B4B 挑战赛",
             "en": "参加了 2026 年 InnoEX 的 B4B 挑战赛"
-        }
+        },
+        "link": ""
     }
 ];
