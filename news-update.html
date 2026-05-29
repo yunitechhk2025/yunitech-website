@@ -363,6 +363,14 @@ async function uploadImg(token){
   });
 }
 
+// UTF-8 安全的 base64 解码（支持中文）
+function b64DecodeUTF8(str){
+  const bytes = atob(str.replace(/\n/g,''));
+  const arr = new Uint8Array(bytes.length);
+  for(let i=0;i<bytes.length;i++) arr[i]=bytes.charCodeAt(i);
+  return new TextDecoder('utf-8').decode(arr);
+}
+
 // ── 加载资讯（优先从 GitHub 读，保证 SHA 最新）──
 async function loadNews(){
   const token = localStorage.getItem('yuni_gh_token')||'';
@@ -371,11 +379,11 @@ async function loadNews(){
       const info = await ghFetch('GET',
         `https://api.github.com/repos/${GH_REPO}/contents/${NEWS_FILE}?ref=${GH_BRANCH}`,
         null, token);
-      const text = atob(info.content.replace(/\n/g,''));
+      const text = b64DecodeUTF8(info.content); // 正确解码 UTF-8
       news = parseNewsJs(text);
       renderList();
       return;
-    } catch(e){ /* fall through to local */ }
+    } catch(e){ console.warn('GitHub load failed, fallback to local', e); }
   }
   // fallback：从本地文件读
   try {
@@ -471,11 +479,11 @@ async function togglePin(id){
 }
 
 // ── GitHub API ──
-async function saveNews(token){
+async function saveNews(token, retry=2){
   if(saving){ toast('正在保存中，请稍候…','err'); return false; }
   saving = true;
   try {
-    // 每次保存都重新获取最新 SHA，避免 409 冲突
+    // 每次保存都重新拉取最新 SHA，避免 409
     const info = await ghFetch('GET',
       `https://api.github.com/repos/${GH_REPO}/contents/${NEWS_FILE}?ref=${GH_BRANCH}`,
       null, token);
@@ -488,7 +496,13 @@ async function saveNews(token){
     return true;
   } catch(e){
     saving = false;
-    toast('失败：'+e.message,'err');
+    // 409 冲突时自动重试
+    if((e.message.includes('409') || e.message.toLowerCase().includes('conflict')) && retry > 0){
+      toast('检测到冲突，自动重试…','');
+      await new Promise(r=>setTimeout(r,800));
+      return saveNews(token, retry-1);
+    }
+    toast('保存失败：'+e.message,'err');
     return false;
   }
 }
