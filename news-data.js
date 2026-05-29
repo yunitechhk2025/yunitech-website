@@ -13,7 +13,8 @@ const newsData = [
             "zh-tw": "与数码港联合参加 Jumpstarter 2026 展览",
             "zh-cn": "与数码港联合参加 Jumpstarter 2026 展览",
             "en": "与数码港联合参加 Jumpstarter 2026 展览"
-        }
+        },
+        "link": ""
     },
     {
         "id": "n1780065196226",
