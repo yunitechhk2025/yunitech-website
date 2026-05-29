@@ -85,6 +85,8 @@ body{font-family:'Inter','PingFang TC',sans-serif;background:#f0f2f5;min-height:
 .ni-pin{color:#667eea;font-weight:500}
 .ni-actions{display:flex;gap:.5rem;flex-shrink:0;margin-left:1rem}
 .btn-sm{padding:6px 12px;border-radius:7px;font-size:.8rem;font-weight:500;cursor:pointer;border:1.5px solid;transition:all .2s}
+.btn-edit{border-color:#c6f6d5;color:#276749;background:#f0fff4}
+.btn-edit:hover{background:#dcfce7}
 .btn-pin-toggle{border-color:#c3cef7;color:#667eea;background:#f5f6ff}
 .btn-pin-toggle:hover{background:#e8eaff}
 .btn-del{border-color:#fcc;color:#e53e3e;background:#fff5f5}
@@ -207,6 +209,56 @@ body{font-family:'Inter','PingFang TC',sans-serif;background:#f0f2f5;min-height:
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- 编辑弹窗 -->
+<div id="editOverlay" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;padding:1rem;">
+  <div style="background:#fff;border-radius:18px;padding:2rem;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.25);">
+    <div style="font-size:1.05rem;font-weight:700;margin-bottom:1.4rem;color:#333">✏️ 编辑资讯</div>
+
+    <div class="two-col">
+      <div class="field"><label>日期</label><input type="date" id="eFDate" /></div>
+      <div class="field"><label>链接（选填）</label><input type="url" id="eFLink" placeholder="https://..." /></div>
+    </div>
+
+    <div class="field">
+      <label>图片（选填）</label>
+      <div id="eImgPreviewWrap" style="display:none" class="img-preview-wrap">
+        <img id="eImgPreview" src="" alt="">
+        <button class="btn-rm-img" onclick="eRemoveImg()">✕ 移除图片</button>
+      </div>
+      <label class="img-upload-label" id="eImgUploadLabel">
+        📷 点击更换图片
+        <input type="file" id="eImgFile" accept="image/*" style="display:none" onchange="ePreviewImg(this)" />
+      </label>
+      <input type="hidden" id="eImgUrl" />
+    </div>
+
+    <div class="pin-row"><input type="checkbox" id="eFPinned" /><label for="eFPinned">置顶</label></div>
+
+    <div class="lang-tabs">
+      <button class="lang-tab on" id="eLangTab-zh-tw" onclick="eSwLang('zh-tw',this)">繁</button>
+      <button class="lang-tab" id="eLangTab-zh-cn" onclick="eSwLang('zh-cn',this)">简</button>
+      <button class="lang-tab" id="eLangTab-en"    onclick="eSwLang('en',this)">EN</button>
+    </div>
+    <div class="lf on" id="elf-zh-tw">
+      <div class="field"><label>標題（繁）</label><input type="text" id="et-zh-tw" /></div>
+      <div class="field"><label>內容（繁）</label><textarea id="ec-zh-tw" rows="3"></textarea></div>
+    </div>
+    <div class="lf" id="elf-zh-cn">
+      <div class="field"><label>标题（简）</label><input type="text" id="et-zh-cn" /></div>
+      <div class="field"><label>内容（简）</label><textarea id="ec-zh-cn" rows="3"></textarea></div>
+    </div>
+    <div class="lf" id="elf-en">
+      <div class="field"><label>Title (EN)</label><input type="text" id="et-en" /></div>
+      <div class="field"><label>Content (EN)</label><textarea id="ec-en" rows="3"></textarea></div>
+    </div>
+
+    <div style="display:flex;gap:.8rem;margin-top:1.4rem;">
+      <button onclick="saveEdit()" style="flex:1;padding:11px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:9px;font-size:.95rem;font-weight:600;cursor:pointer;">保存并发布</button>
+      <button onclick="closeEdit()" style="padding:11px 18px;border:1.5px solid #e2e8f0;border-radius:9px;background:#f8f9fa;cursor:pointer;font-size:.9rem;">取消</button>
+    </div>
+  </div>
+</div>
 
 <script>
 const ADMIN_KEY = 'yuni-news-2026';
@@ -450,10 +502,134 @@ function renderList(){
         </div>
       </div>
       <div class="ni-actions">
+        <button class="btn-sm btn-edit" onclick="openEdit('${item.id}')">编辑</button>
         <button class="btn-sm btn-pin-toggle" onclick="togglePin('${item.id}')">${item.pinned?'取消置顶':'置顶'}</button>
         <button class="btn-sm btn-del" onclick="deleteItem('${item.id}')">删除</button>
       </div>
     </div>`).join('');
+}
+
+// ── 编辑已有资讯 ──
+let editingId = null;
+let ePendingFile = null;
+
+function openEdit(id){
+  const item = news.find(n=>n.id===id);
+  if(!item) return;
+  editingId = id;
+  ePendingFile = null;
+
+  document.getElementById('eFDate').value     = item.date||'';
+  document.getElementById('eFLink').value     = item.link||'';
+  document.getElementById('eFPinned').checked = !!item.pinned;
+  document.getElementById('eImgUrl').value    = item.image||'';
+
+  if(item.image){
+    document.getElementById('eImgPreview').src = item.image;
+    document.getElementById('eImgPreviewWrap').style.display = 'block';
+    document.getElementById('eImgUploadLabel').style.display = 'none';
+  } else {
+    document.getElementById('eImgPreviewWrap').style.display = 'none';
+    document.getElementById('eImgUploadLabel').style.display = 'flex';
+  }
+
+  ['zh-tw','zh-cn','en'].forEach(l=>{
+    document.getElementById('et-'+l).value = item.title[l]||'';
+    document.getElementById('ec-'+l).value = item.content[l]||'';
+  });
+
+  // 重置语言 tab
+  document.querySelectorAll('#editOverlay .lang-tab').forEach((b,i)=>b.classList.toggle('on',i===0));
+  document.querySelectorAll('#editOverlay .lf').forEach((f,i)=>f.classList.toggle('on',i===0));
+
+  const ov = document.getElementById('editOverlay');
+  ov.style.display = 'flex';
+}
+
+function closeEdit(){
+  document.getElementById('editOverlay').style.display = 'none';
+  editingId = null; ePendingFile = null;
+}
+
+function eSwLang(lang, btn){
+  document.querySelectorAll('#editOverlay .lang-tab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('#editOverlay .lf').forEach(f=>f.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('elf-'+lang).classList.add('on');
+}
+
+function ePreviewImg(input){
+  const file = input.files[0];
+  if(!file) return;
+  ePendingFile = file;
+  const reader = new FileReader();
+  reader.onload = e=>{
+    document.getElementById('eImgPreview').src = e.target.result;
+    document.getElementById('eImgPreviewWrap').style.display = 'block';
+    document.getElementById('eImgUploadLabel').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function eRemoveImg(){
+  ePendingFile = null;
+  document.getElementById('eImgFile').value = '';
+  document.getElementById('eImgUrl').value = '';
+  document.getElementById('eImgPreview').src = '';
+  document.getElementById('eImgPreviewWrap').style.display = 'none';
+  document.getElementById('eImgUploadLabel').style.display = 'flex';
+}
+
+async function saveEdit(){
+  const token = localStorage.getItem('yuni_gh_token')||'';
+  if(!token){ toast('请先配置 GitHub Token','err'); return; }
+
+  const item = news.find(n=>n.id===editingId);
+  if(!item) return;
+
+  const tTw = document.getElementById('et-zh-tw').value.trim();
+  const tCn = document.getElementById('et-zh-cn').value.trim();
+  const tEn = document.getElementById('et-en').value.trim();
+  if(!tTw&&!tCn&&!tEn){ toast('请至少填写一种语言的标题','err'); return; }
+
+  // 上传新图片
+  let imageUrl = document.getElementById('eImgUrl').value.trim();
+  if(ePendingFile){
+    toast('<span class="spinner"></span>上传图片中…','');
+    try {
+      const ext  = ePendingFile.name.split('.').pop().toLowerCase();
+      const path = 'images/news/news-'+Date.now()+'.'+ext;
+      const b64  = await fileToBase64(ePendingFile);
+      await ghFetch('PUT',`https://api.github.com/repos/${GH_REPO}/contents/${path}`,
+        {message:'upload news image',content:b64,branch:GH_BRANCH}, token);
+      imageUrl = 'https://yunitechhk.com/'+path;
+      ePendingFile = null;
+    } catch(e){ toast('图片上传失败：'+e.message,'err'); return; }
+  }
+
+  item.date    = document.getElementById('eFDate').value;
+  item.link    = document.getElementById('eFLink').value.trim();
+  item.pinned  = document.getElementById('eFPinned').checked;
+  item.image   = imageUrl;
+  item.title   = {'zh-tw':tTw||tCn||tEn,'zh-cn':tCn||tTw||tEn,'en':tEn||tTw||tCn};
+  item.content = {
+    'zh-tw': document.getElementById('ec-zh-tw').value.trim()||document.getElementById('ec-zh-cn').value.trim()||document.getElementById('ec-en').value.trim(),
+    'zh-cn': document.getElementById('ec-zh-cn').value.trim()||document.getElementById('ec-zh-tw').value.trim()||document.getElementById('ec-en').value.trim(),
+    'en':    document.getElementById('ec-en').value.trim()||document.getElementById('ec-zh-tw').value.trim()||document.getElementById('ec-zh-cn').value.trim()
+  };
+
+  toast('<span class="spinner"></span>保存中…','');
+  const ok = await saveNews(token);
+  if(ok){ closeEdit(); renderList(); toast('✅ 已保存，官网约 1 分钟后更新','ok'); }
+}
+
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const r = new FileReader();
+    r.onload = e => resolve(e.target.result.split(',')[1]);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
 }
 
 // ── Toast ──
