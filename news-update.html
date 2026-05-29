@@ -268,6 +268,7 @@ const NEWS_FILE = 'news-data.js';
 
 let news = [];
 let pendingFile = null;
+let saving = false;
 
 // ── 登录 ──
 function doLogin(){
@@ -304,7 +305,8 @@ function saveToken(){
   setTokenStatus(true);
   document.getElementById('tokenBody').classList.remove('open');
   document.getElementById('tokenArrow').textContent = '▼';
-  toast('Token 已保存，以后无需再输入','ok');
+  toast('Token 已保存，正在同步资讯数据…','ok');
+  loadNews(); // 用 token 重新从 GitHub 加载，确保 SHA 最新
 }
 function setTokenStatus(ok){
   document.getElementById('tokenDot').className = 'token-dot' + (ok?' ok':'');
@@ -361,8 +363,21 @@ async function uploadImg(token){
   });
 }
 
-// ── 加载资讯 ──
+// ── 加载资讯（优先从 GitHub 读，保证 SHA 最新）──
 async function loadNews(){
+  const token = localStorage.getItem('yuni_gh_token')||'';
+  if(token){
+    try {
+      const info = await ghFetch('GET',
+        `https://api.github.com/repos/${GH_REPO}/contents/${NEWS_FILE}?ref=${GH_BRANCH}`,
+        null, token);
+      const text = atob(info.content.replace(/\n/g,''));
+      news = parseNewsJs(text);
+      renderList();
+      return;
+    } catch(e){ /* fall through to local */ }
+  }
+  // fallback：从本地文件读
   try {
     const r = await fetch('news-data.js?t='+Date.now());
     const text = await r.text();
@@ -457,7 +472,10 @@ async function togglePin(id){
 
 // ── GitHub API ──
 async function saveNews(token){
+  if(saving){ toast('正在保存中，请稍候…','err'); return false; }
+  saving = true;
   try {
+    // 每次保存都重新获取最新 SHA，避免 409 冲突
     const info = await ghFetch('GET',
       `https://api.github.com/repos/${GH_REPO}/contents/${NEWS_FILE}?ref=${GH_BRANCH}`,
       null, token);
@@ -466,8 +484,13 @@ async function saveNews(token){
     await ghFetch('PUT',
       `https://api.github.com/repos/${GH_REPO}/contents/${NEWS_FILE}`,
       {message:'update news-data.js',content:encoded,sha:info.sha,branch:GH_BRANCH}, token);
+    saving = false;
     return true;
-  } catch(e){ toast('失败：'+e.message,'err'); return false; }
+  } catch(e){
+    saving = false;
+    toast('失败：'+e.message,'err');
+    return false;
+  }
 }
 
 async function ghFetch(method, url, body, token){
