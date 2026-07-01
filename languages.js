@@ -13,6 +13,9 @@ const languageData = {
         'news-read-more': '查看详情',
         'news-pinned': '置顶',
         'news-empty': '暂无资讯，敬请期待。',
+        'news-back': '返回资讯列表',
+        'news-not-found': '未找到该资讯，可能已被移除。',
+        'news-not-found-link': '返回首页资讯',
         
         // 主页横幅
         'hero-subtitle': '专业的企业AI转型服务商',
@@ -135,6 +138,9 @@ const languageData = {
         'news-read-more': '查看詳情',
         'news-pinned': '置頂',
         'news-empty': '暫無資訊，敬請期待。',
+        'news-back': '返回資訊列表',
+        'news-not-found': '未找到該資訊，可能已被移除。',
+        'news-not-found-link': '返回首頁資訊',
         
         // 主頁橫幅
         'hero-subtitle': '專業的企業AI轉型服務商',
@@ -257,6 +263,9 @@ const languageData = {
         'news-read-more': 'Read More',
         'news-pinned': 'Pinned',
         'news-empty': 'No news at the moment. Stay tuned.',
+        'news-back': 'Back to News',
+        'news-not-found': 'This article could not be found. It may have been removed.',
+        'news-not-found-link': 'Back to News List',
         
         // Hero Section
         'hero-subtitle': 'Professional Enterprise AI<br>Transformation Service Provider',

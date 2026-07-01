@@ -1433,6 +1433,9 @@ html {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .news-card:hover {
@@ -1471,6 +1474,10 @@ html {
     color: #666;
     line-height: 1.7;
     flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .news-card-link {
@@ -1499,6 +1506,112 @@ html {
 
 /* 资讯卡片图片 */
 .news-card-img { width:100%; height:180px; object-fit:cover; border-radius:10px; display:block; margin-bottom:0.5rem; }
+
+/* 资讯详情页 */
+.news-detail-page {
+    padding: 120px 0 80px;
+    min-height: 60vh;
+    background: #f8f9fa;
+}
+
+.news-detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #667eea;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+}
+
+.news-detail-back:hover {
+    color: #764ba2;
+}
+
+.news-detail {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+}
+
+.news-detail-hero img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+.news-detail-content {
+    padding: 2.5rem 3rem;
+}
+
+.news-detail-date {
+    display: block;
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 1rem;
+}
+
+.news-detail-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+}
+
+.news-detail-body p {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+}
+
+.news-detail-body p:last-child {
+    margin-bottom: 0;
+}
+
+.news-detail-not-found {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+}
+
+.news-detail-not-found i {
+    font-size: 3rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.news-detail-not-found p {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .news-detail-page {
+        padding: 100px 0 60px;
+    }
+
+    .news-detail-content {
+        padding: 1.5rem;
+    }
+
+    .news-detail-title {
+        font-size: 1.5rem;
+    }
+
+    .news-detail-hero img {
+        max-height: 240px;
+    }
+}
 
 /* 滚动条样式 */
 ::-webkit-scrollbar {

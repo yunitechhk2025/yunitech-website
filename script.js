@@ -428,18 +428,21 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        const readMore = data['news-read-more'] || '查看详情';
+
         grid.innerHTML = newsData.map(item => {
             const title   = item.title[lang]   || item.title['zh-tw'] || '';
             const content = item.content[lang] || item.content['zh-tw'] || '';
             const img     = item.image ? `<img src="${item.image}" class="news-card-img" alt="${title}">` : '';
-            return `<div class="news-card">
+            return `<a href="news.html?id=${item.id}" class="news-card">
                 ${img}
                 <div class="news-card-meta">
                     <span class="news-card-date">${item.date}</span>
                 </div>
                 <h3>${title}</h3>
                 <p>${content}</p>
-            </div>`;
+                <span class="news-card-link">${readMore}</span>
+            </a>`;
         }).join('');
     }
 
