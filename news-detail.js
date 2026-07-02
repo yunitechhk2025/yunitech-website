@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (data[key]) {
                 if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                     element.placeholder = data[key];
-                } else if (element.classList.contains('news-detail-back')) {
-                    element.innerHTML = `<i class="fas fa-arrow-left"></i> ${data[key]}`;
                 } else {
                     element.innerHTML = data[key];
                 }

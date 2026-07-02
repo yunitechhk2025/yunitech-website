@@ -4,30 +4,30 @@ const newsData = [
         "date": "2026-06-26",
         "image": "new_pic/odoo-erp-ai.png",
         "title": {
-            "zh-tw": "聯合創辦人 Caleb Cheng 受邀在 Odoo ERPxAccountxAI 擔任嘉賓講者：開啟企業級 AI 轉型之路",
-            "zh-cn": "联合创始人 Caleb Cheng 受邀在 Odoo ERPxAccountxAI 担任嘉宾讲者：开启企业级 AI 转型之路",
-            "en": "Co-founder Caleb Cheng as Guest Speaker at Odoo ERPxAccountxAI: Kickstarting the Enterprise AI Transformation"
+            "zh-tw": "Odoo ERP x Account x AI",
+            "zh-cn": "Odoo ERP x Account x AI",
+            "en": "Odoo ERP x Account x AI"
         },
         "content": {
-            "zh-tw": "YUNI TECH 聯合創辦人 Caleb Cheng 受邀出席 Odoo ERPxAccountxAI 活動，分享數字人力新趨勢與企業 AI 轉型實踐。",
-            "zh-cn": "YUNI TECH 联合创始人 Caleb Cheng 受邀出席 Odoo ERPxAccountxAI 活动，分享数字人力新趋势与企业 AI 转型实践。",
-            "en": "YUNI TECH Co-founder Caleb Cheng was invited to speak at Odoo ERPxAccountxAI, sharing insights on digital workforce trends and enterprise AI transformation."
+            "zh-tw": "YUNI TECH 受邀出席 Odoo ERP x Account x AI 活動，分享數字人力新趨勢與企業 AI 轉型實踐。",
+            "zh-cn": "YUNI TECH 受邀出席 Odoo ERP x Account x AI 活动，分享数字人力新趋势与企业 AI 转型实践。",
+            "en": "YUNI TECH was invited to Odoo ERP x Account x AI, sharing insights on digital workforce trends and enterprise AI transformation."
         },
         "body": {
             "zh-tw": [
-                "YUNI TECH 聯合創辦人 Caleb Cheng 受邀在 Odoo ERPxAccountxAI 活動中擔任嘉賓講者，與會計、ERP 及企業管理領域的專業人士共同探讨 AI 如何驅動企業級數字化轉型。",
+                "YUNI TECH 受邀在 Odoo ERP x Account x AI 活動中擔任嘉賓分享，與會計、ERP 及企業管理領域的專業人士共同探讨 AI 如何驅動企業級數字化轉型。",
                 "在題為「數字人力新趨勢：由 AI 客服、銷售邁向全方位 AI 員工」的分享中，Caleb 闡述了 AI 技術正從單點應用（如客服、銷售）向覆蓋業務全流程的全方位 AI 員工演進。透過活用企業知識庫與執行準則，企業能夠實現業務流程自動化，大幅提升營運效率。",
                 "結合 YUNI TECH 在 AI 方案生成與高信譽人才匹配領域的實踐經驗，Caleb 展示了如何將 Odoo ERP 等企業系統與 AI 能力深度融合，幫助企業從「試點探索」邁向「規模化落地」。",
                 "YUNI TECH 將持續與 Odoo 等生態夥伴合作，為更多企業提供從 AI 戰略規劃到人才交付的一站式轉型服務。"
             ],
             "zh-cn": [
-                "YUNI TECH 联合创始人 Caleb Cheng 受邀在 Odoo ERPxAccountxAI 活动中担任嘉宾讲者，与会计、ERP 及企业管理领域的专业人士共同探讨 AI 如何驱动企业级数字化转型。",
+                "YUNI TECH 受邀在 Odoo ERP x Account x AI 活动中担任嘉宾分享，与会计、ERP 及企业管理领域的专业人士共同探讨 AI 如何驱动企业级数字化转型。",
                 "在题为「数字人力新趋势：由 AI 客服、销售迈向全方位 AI 员工」的分享中，Caleb 阐述了 AI 技术正从单点应用（如客服、销售）向覆盖业务全流程的全方位 AI 员工演进。通过活用企业知识库与执行准则，企业能够实现业务流程自动化，大幅提升运营效率。",
                 "结合 YUNI TECH 在 AI 方案生成与高信誉人才匹配领域的实践经验，Caleb 展示了如何将 Odoo ERP 等企业系统与 AI 能力深度融合，帮助企业从「试点探索」迈向「规模化落地」。",
                 "YUNI TECH 将持续与 Odoo 等生态伙伴合作，为更多企业提供从 AI 战略规划到人才交付的一站式转型服务。"
             ],
             "en": [
-                "YUNI TECH Co-founder Caleb Cheng was invited as a guest speaker at Odoo ERPxAccountxAI, joining accounting, ERP, and enterprise management professionals to explore how AI drives enterprise-level digital transformation.",
+                "YUNI TECH was invited to speak at Odoo ERP x Account x AI, joining accounting, ERP, and enterprise management professionals to explore how AI drives enterprise-level digital transformation.",
                 "In his session titled \"Digital Workforce New Trends: From AI Customer Service and Sales to All-round AI Employees,\" Caleb explained how AI is evolving from point applications — such as customer service and sales — toward comprehensive AI employees that cover entire business workflows. By leveraging enterprise knowledge bases and execution standards, organizations can achieve end-to-end process automation and significantly boost operational efficiency.",
                 "Drawing on YUNI TECH's experience in AI solution generation and high-trust talent matching, Caleb demonstrated how to deeply integrate enterprise systems like Odoo ERP with AI capabilities, helping businesses move from pilot exploration to scaled deployment.",
                 "YUNI TECH will continue partnering with ecosystem leaders like Odoo to provide one-stop transformation services — from AI strategy planning to talent delivery — for enterprises worldwide."
