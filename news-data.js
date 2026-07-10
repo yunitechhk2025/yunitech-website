@@ -28,7 +28,7 @@ const newsData = [
             ],
             "en": [
                 "YUNI TECH was invited to speak at Odoo ERP x Account x AI, joining accounting, ERP, and enterprise management professionals to explore how AI drives enterprise-level digital transformation.",
-                "In his session titled \"Digital Workforce New Trends: From AI Customer Service and Sales to All-round AI Employees,\" Caleb explained how AI is evolving from point applications — such as customer service and sales — toward comprehensive AI employees that cover entire business workflows. By leveraging enterprise knowledge bases and execution standards, organizations can achieve end-to-end process automation and significantly boost operational efficiency.",
+                "In his session titled \"Digital Workforce New Trends: From AI Customer Service and Sales to All-round AI Staff,\" Caleb explained how AI is evolving from point applications — such as customer service and sales — toward comprehensive AI staff that cover entire business workflows. By leveraging enterprise knowledge bases and execution standards, organizations can achieve end-to-end process automation and significantly boost operational efficiency.",
                 "Drawing on YUNI TECH's experience in AI solution generation and high-trust talent matching, Caleb demonstrated how to deeply integrate enterprise systems like Odoo ERP with AI capabilities, helping businesses move from pilot exploration to scaled deployment.",
                 "YUNI TECH will continue partnering with ecosystem leaders like Odoo to provide one-stop transformation services — from AI strategy planning to talent delivery — for enterprises worldwide."
             ]
