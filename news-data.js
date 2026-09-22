@@ -67,37 +67,37 @@ const newsData = [
         }
     },
     {
-        "id": "news-ai-apr-2026",
+        "id": "news-viutv-smart-wealth-2026",
         "date": "2026-04-16",
-        "image": "new_pic/3.jpg",
+        "image": "new_pic/viutv-smart-wealth.png",
         "title": {
-            "zh-tw": "2026 年 4 月 AI 行業全景：GPT-6 橫空出世",
-            "zh-cn": "2026 年 4 月 AI 行业全景：GPT-6 横空出世",
-            "en": "AI Industry Review April 2026: GPT-6 Arrives"
+            "zh-tw": "viuTV【智富通】AI全方位嘉賓",
+            "zh-cn": "viuTV【智富通】AI全方位嘉宾",
+            "en": "Guest Speaker, \"AI All-Round\" Segment, Smart Wealth (ViuTV)"
         },
         "content": {
-            "zh-tw": "2026 年 4 月，OpenAI 正式發布旗艦模型 GPT-6，以 40% 性能躍升與 200 萬 Token 上下文引領 AI 行業進入新紀元。",
-            "zh-cn": "2026 年 4 月，OpenAI 正式发布旗舰模型 GPT-6，以 40% 性能跃升与 200 万 Token 上下文引领 AI 行业进入新纪元。",
-            "en": "In April 2026, OpenAI launched GPT-6 with a 40% performance boost and a 2M token context window, ushering in a new era for the AI industry."
+            "zh-tw": "龍蝦AI熱潮下，使用AI更要做好風險管控。個人和企業該如何擁抱AI？",
+            "zh-cn": "龙虾AI热潮下，使用AI更要做好风险管控。个人和企业该如何拥抱AI？",
+            "en": "Amid the Lobster AI craze, risk management is more crucial than ever. How individuals and enterprises can embrace AI."
         },
         "body": {
             "zh-tw": [
-                "2026 年 4 月，OpenAI 正式發布其最新旗艦大語言模型 GPT-6。相比前代產品，GPT-6 在推理能力、多模態理解及代碼生成方面實現了約 40% 的性能躍升，並將上下文窗口擴展至 200 萬 Token，為處理超長文檔和複雜企業知識庫提供了全新可能。",
-                "與此同時，全球 AI 監管框架也在加速完善。歐盟 AI 法案進入全面執行階段，亞太地區多國相繼出台生成式 AI 應用指引。企業在擁抱 AI 創新的同時，合規與數據安全已成為不可忽視的議題。",
-                "YUNI TECH 認為，2026 年是企業 AI 轉型從「試點探索」邁向「規模化落地」的關鍵之年。我們建議企業在選型時重點評估：模型能力與業務場景的匹配度、私有化部署的可行性，以及 AI 人才梯隊的建設進度。",
-                "如需了解 GPT-6 及最新 AI 技術如何應用於您的業務場景，歡迎聯繫 YUNI TECH 獲取免費諮詢。"
+                "YUNI TECH 聯合創辦人 Caleb Cheng 受邀出席 ViuTV《智富通》「AI全方位」環節，與主持羅佩怡一同探討在龍蝦AI熱潮下，個人與企業應如何正確擁抱人工智能。",
+                "節目中，Caleb 指出：AI 工具愈來愈普及，但使用 AI 更要做好風險管控——包括數據安全、合規要求、輸出可信度，以及把 AI 真正嵌入業務流程而非停留在單點試用。",
+                "面對個人與企業「該如何擁抱 AI」的核心問題，Caleb 分享了從場景評估、知識庫建設到人才與流程配套的落地思路，並結合 YUNI TECH 在企業 AI 轉型與高信譽人才匹配方面的實踐經驗。",
+                "YUNI TECH 將持續透過媒體與行業交流，推廣「可控、可落地」的 AI 應用理念，協助更多組織在創新與風險之間取得平衡。"
             ],
             "zh-cn": [
-                "2026 年 4 月，OpenAI 正式发布其最新旗舰大语言模型 GPT-6。相比前代产品，GPT-6 在推理能力、多模态理解及代码生成方面实现了约 40% 的性能跃升，并将上下文窗口扩展至 200 万 Token，为处理超长文档和复杂企业知识库提供了全新可能。",
-                "与此同时，全球 AI 监管框架也在加速完善。欧盟 AI 法案进入全面执行阶段，亚太地区多国相继出台生成式 AI 应用指引。企业在拥抱 AI 创新的同时，合规与数据安全已成为不可忽视的议题。",
-                "YUNI TECH 认为，2026 年是企业 AI 转型从「试点探索」迈向「规模化落地」的关键之年。我们建议企业在选型时重点评估：模型能力与业务场景的匹配度、私有化部署的可行性，以及 AI 人才梯队的建设进度。",
-                "如需了解 GPT-6 及最新 AI 技术如何应用于您的业务场景，欢迎联系 YUNI TECH 获取免费咨询。"
+                "YUNI TECH 联合创办人 Caleb Cheng 受邀出席 ViuTV《智富通》「AI全方位」环节，与主持罗佩怡一同探讨在龙虾AI热潮下，个人与企业应如何正确拥抱人工智能。",
+                "节目中，Caleb 指出：AI 工具越来越普及，但使用 AI 更要做好风险管控——包括数据安全、合规要求、输出可信度，以及把 AI 真正嵌入业务流程而非停留在单点试用。",
+                "面对个人与企业「该如何拥抱 AI」的核心问题，Caleb 分享了从场景评估、知识库建设到人才与流程配套的落地方案，并结合 YUNI TECH 在企业 AI 转型与高信誉人才匹配方面的实践经验。",
+                "YUNI TECH 将持续通过媒体与行业交流，推广「可控、可落地」的 AI 应用理念，协助更多组织在创新与风险之间取得平衡。"
             ],
             "en": [
-                "In April 2026, OpenAI officially released GPT-6, its latest flagship large language model. Compared to its predecessor, GPT-6 delivers approximately 40% performance improvements in reasoning, multimodal understanding, and code generation, with a context window expanded to 2 million tokens — opening new possibilities for processing lengthy documents and complex enterprise knowledge bases.",
-                "Meanwhile, global AI regulatory frameworks are maturing rapidly. The EU AI Act has entered full enforcement, and multiple Asia-Pacific nations have introduced generative AI application guidelines. As enterprises embrace AI innovation, compliance and data security have become critical considerations.",
-                "YUNI TECH believes 2026 is a pivotal year for enterprise AI transformation — moving from pilot exploration to scaled deployment. We recommend evaluating model-to-use-case fit, private deployment feasibility, and AI talent pipeline development when selecting solutions.",
-                "To learn how GPT-6 and the latest AI technologies can be applied to your business, contact YUNI TECH for a free consultation."
+                "YUNI TECH Co-founder Caleb Cheng was invited as a guest on ViuTV's Smart Wealth program for the \"AI All-Round\" segment, joining host Law Pui Yi to discuss how individuals and enterprises can embrace AI amid the Lobster AI craze.",
+                "In the program, Caleb emphasized that as AI tools become more accessible, risk management is more crucial than ever — covering data security, compliance, output reliability, and embedding AI into real business workflows rather than remaining at one-off pilots.",
+                "Addressing how individuals and enterprises can embrace AI, Caleb shared practical approaches spanning use-case assessment, knowledge-base development, and talent and process readiness, drawing on YUNI TECH's experience in enterprise AI transformation and high-trust talent matching.",
+                "YUNI TECH will continue engaging through media and industry platforms to promote controllable, deployable AI adoption, helping organizations balance innovation with risk."
             ]
         }
     },
