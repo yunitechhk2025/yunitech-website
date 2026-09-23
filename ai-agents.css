@@ -1,0 +1,644 @@
+/* AI Agent 落地页 */
+.ag-page {
+    --ag-primary: #667eea;
+    --ag-secondary: #764ba2;
+    --ag-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --ag-text: #1f2340;
+    --ag-muted: #5f6480;
+    color: var(--ag-text);
+}
+
+.ag-page .nav-link.active {
+    color: var(--ag-primary);
+}
+
+.ag-page .nav-link.active::after {
+    width: 100%;
+}
+
+/* Hero */
+.ag-hero {
+    padding: 150px 0 100px;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(118, 75, 162, 0.18), transparent 45%),
+        radial-gradient(circle at 10% 80%, rgba(102, 126, 234, 0.2), transparent 45%),
+        linear-gradient(135deg, #f5f7fa 0%, #e6ebf7 100%);
+    overflow: hidden;
+}
+
+.ag-hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.ag-badge,
+.ag-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(102, 126, 234, 0.12);
+    color: var(--ag-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.ag-page .ag-hero-title {
+    font-size: 3.2rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--ag-text);
+}
+
+.ag-hero-desc {
+    font-size: 1.15rem;
+    color: var(--ag-muted);
+    margin-bottom: 2rem;
+    max-width: 560px;
+}
+
+.ag-hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.ag-hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.ag-hero-stat strong {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--ag-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.ag-hero-stat span {
+    font-size: 0.9rem;
+    color: var(--ag-muted);
+}
+
+/* Hero 对话示意 */
+.ag-hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.ag-chat-card {
+    width: 100%;
+    max-width: 380px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 1.25rem;
+    box-shadow: 0 20px 50px rgba(64, 60, 140, 0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    animation: ag-float 6s ease-in-out infinite;
+}
+
+.ag-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eef0f7;
+}
+
+.ag-chat-header strong {
+    display: block;
+    font-size: 1rem;
+}
+
+.ag-chat-header small {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #2eaa5c;
+    font-size: 0.8rem;
+}
+
+.ag-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--ag-gradient);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ag-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2eaa5c;
+}
+
+.ag-bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.ag-bubble-user {
+    align-self: flex-end;
+    background: #eef0fb;
+    color: var(--ag-text);
+    border-bottom-right-radius: 4px;
+}
+
+.ag-bubble-ai {
+    align-self: flex-start;
+    background: var(--ag-gradient);
+    color: #fff;
+    border-bottom-left-radius: 4px;
+}
+
+.ag-typing {
+    align-self: flex-start;
+    display: flex;
+    gap: 4px;
+    padding: 10px 14px;
+    background: #f3f4fa;
+    border-radius: 14px;
+}
+
+.ag-typing span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a3a8c7;
+    animation: ag-blink 1.2s infinite;
+}
+
+.ag-typing span:nth-child(2) { animation-delay: 0.2s; }
+.ag-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+.ag-lead-chip {
+    position: absolute;
+    left: 0;
+    bottom: -28px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fff;
+    padding: 0.8rem 1.1rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(64, 60, 140, 0.18);
+    animation: ag-float 6s ease-in-out infinite reverse;
+}
+
+.ag-lead-chip i {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(255, 138, 76, 0.15);
+    color: #ff7a3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ag-lead-chip strong {
+    display: block;
+    font-size: 0.92rem;
+}
+
+.ag-lead-chip small {
+    color: var(--ag-muted);
+    font-size: 0.8rem;
+}
+
+@keyframes ag-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes ag-blink {
+    0%, 80%, 100% { opacity: 0.3; }
+    40% { opacity: 1; }
+}
+
+/* 通用区块 */
+.ag-section {
+    padding: 90px 0;
+    background: #fff;
+}
+
+.ag-section-alt {
+    background: #f7f8fd;
+}
+
+.ag-section-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 3.5rem;
+}
+
+.ag-page .ag-section-header h2 {
+    font-size: 2.4rem;
+    line-height: 1.3;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--ag-text);
+}
+
+.ag-section-header p {
+    font-size: 1.1rem;
+    color: var(--ag-muted);
+}
+
+.ag-center {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.ag-feature-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--ag-gradient);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.35);
+}
+
+.ag-page h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--ag-text);
+}
+
+.ag-page .ag-section p {
+    color: var(--ag-muted);
+}
+
+/* 获客：成本对比 */
+.ag-lead-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.ag-cost-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2.25rem;
+    box-shadow: 0 15px 45px rgba(64, 60, 140, 0.12);
+    border: 1px solid #eceefa;
+}
+
+.ag-page .ag-cost-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.75rem;
+}
+
+.ag-cost-row {
+    margin-bottom: 1.5rem;
+}
+
+.ag-cost-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.ag-cost-label strong {
+    font-weight: 700;
+}
+
+.ag-highlight {
+    color: var(--ag-secondary);
+}
+
+.ag-cost-track {
+    height: 18px;
+    border-radius: 999px;
+    background: #f0f1f8;
+    overflow: hidden;
+}
+
+.ag-cost-bar {
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ag-cost-bar-trad {
+    background: linear-gradient(90deg, #c4c8dc, #9aa0bd);
+}
+
+.ag-cost-bar-ai {
+    background: var(--ag-gradient);
+    transition-delay: 0.4s;
+}
+
+.ag-cost-card.ag-visible .ag-cost-bar-trad { width: 100%; }
+.ag-cost-card.ag-visible .ag-cost-bar-ai { width: 20%; }
+
+.ag-cost-save {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    border-radius: 14px;
+    background: rgba(102, 126, 234, 0.08);
+    font-weight: 600;
+}
+
+.ag-cost-save-num {
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--ag-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ag-page .ag-cost-note {
+    font-size: 0.8rem;
+    color: #9aa0bd;
+    margin-top: 0.9rem;
+}
+
+.ag-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.ag-feature {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+/* 客服：卡片 */
+.ag-cs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
+
+.ag-cs-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 2rem 1.75rem;
+    border: 1px solid #eceefa;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ag-cs-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(64, 60, 140, 0.12);
+}
+
+.ag-cs-card .ag-feature-icon {
+    margin-bottom: 1.25rem;
+}
+
+/* 闭环 */
+.ag-loop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    position: relative;
+}
+
+.ag-loop-step {
+    position: relative;
+    text-align: center;
+    padding: 2rem 1.25rem;
+    border-radius: 18px;
+    background: #f7f8fd;
+}
+
+.ag-loop-step:not(:last-child)::after {
+    content: '\f054';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: -1.1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ag-primary);
+    z-index: 1;
+}
+
+.ag-loop-num {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: rgba(118, 75, 162, 0.45);
+}
+
+.ag-loop-step > i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: var(--ag-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 上线步骤 */
+.ag-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.ag-step {
+    background: #fff;
+    border-radius: 18px;
+    padding: 2.25rem 1.75rem;
+    border: 1px solid #eceefa;
+}
+
+.ag-step-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--ag-primary);
+    color: var(--ag-primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+/* 联系表单 */
+.ag-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fff;
+    color: #333;
+}
+
+.ag-select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* 进入视窗动画 */
+.ag-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.ag-reveal.ag-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ag-cs-card.ag-reveal.ag-visible:hover {
+    transform: translateY(-6px);
+}
+
+/* styles.css 在繁体下会重置所有元素的 font-weight */
+.ag-page .ag-badge,
+.ag-page .ag-tag,
+.ag-page .ag-cost-save {
+    font-weight: 600;
+}
+
+.ag-page .fas {
+    font-weight: 900;
+}
+
+.ag-page .ag-loop-num,
+.ag-page .ag-step-num,
+.ag-page .ag-cost-save-num,
+.ag-page .ag-chat-header strong,
+.ag-page .ag-lead-chip strong {
+    font-weight: 700;
+}
+
+/* 响应式 */
+@media (max-width: 992px) {
+    .ag-hero-grid,
+    .ag-lead-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ag-hero-grid {
+        gap: 4rem;
+    }
+
+    .ag-cs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ag-loop {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ag-loop-step::after {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .ag-hero {
+        padding: 120px 0 80px;
+        text-align: center;
+    }
+
+    .ag-page .ag-hero-title {
+        font-size: 2.2rem;
+    }
+
+    .ag-hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ag-hero-buttons,
+    .ag-hero-stats {
+        justify-content: center;
+    }
+
+    .ag-hero-visual {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .ag-lead-chip {
+        position: static;
+        animation: none;
+        text-align: left;
+    }
+
+    .ag-section {
+        padding: 70px 0;
+    }
+
+    .ag-page .ag-section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .ag-cs-grid,
+    .ag-steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .ag-page .ag-hero-title {
+        font-size: 1.8rem;
+    }
+
+    .ag-hero-stats {
+        gap: 1.5rem;
+    }
+
+    .ag-hero-stat strong {
+        font-size: 1.6rem;
+    }
+
+    .ag-loop {
+        grid-template-columns: 1fr;
+    }
+
+    .ag-cost-card {
+        padding: 1.5rem;
+    }
+}
